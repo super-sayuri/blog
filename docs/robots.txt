@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://super-sayuri.github.io/blog/sitemap.xml
