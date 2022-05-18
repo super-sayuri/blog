@@ -1,0 +1,53 @@
+baseURL = 'https://super-sayuri.github.io/blog'
+languageCode = 'zh'
+title = '❤小百合❤'
+paginate = 10
+theme = "PaperMod"
+
+enableRobotsTXT = true
+enableEmoji = true
+hasCJKLanguage = true
+publishDir = "docs"
+
+[taxonomies]
+category = "categories"
+tag = "tags"
+
+[permalinks]
+posts = '/:year/:month/:day/:title/'
+
+
+[params]
+author = "超级小百合"
+
+defaultTheme = "auto"
+
+[params.homeInfoParams]
+title = "超级无敌可爱的小百合"
+content = "Time to TROLL!"
+[[params.socialIcons]]
+name = "github"
+url = "https://github.com/super-sayuri"
+[[params.socialIcons]]
+name = "discord"
+url = "https://discord.gg/WcH3q6UDHV"
+[[params.socialIcons]]
+name = "telegram"
+url = "https://t.me/super_sayuri"
+
+[menu]
+[[menu.main]]
+identifier = "categories"
+name = "categories"
+url = "/categoreis"
+weight = 9
+[[menu.main]]
+identifier = "tags"
+name = "tags"
+url = "/tags"
+weight = 10
+[[menu.main]]
+identifier = "about"
+name = "about"
+url = "/about"
+weight = 11
