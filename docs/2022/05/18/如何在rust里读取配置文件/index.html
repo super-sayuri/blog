@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>如何在rust里读取配置文件 | ❤小百合❤</title>
+<meta name="keywords" content="rust, config">
+<meta name="description" content="如果想看代码直接拉到最后。 程序在不同环境运行很多变量都不同，所以需要配置文件来适配。 rust里从文件读取数据到结构很简单，但是之后呢？ 所以这">
+<meta name="author" content="超级小百合">
+<link rel="canonical" href="https://super-sayuri.github.io/blog/2022/05/18/%E5%A6%82%E4%BD%95%E5%9C%A8rust%E9%87%8C%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">
+<link crossorigin="anonymous" href="/blog/assets/css/stylesheet.min.ec8da366ca2fb647537ccb7a8f6fa5b4e9cd3c7a0d3171dd2d3baad1e49c8bfc.css" integrity="sha256-7I2jZsovtkdTfMt6j2&#43;ltOnNPHoNMXHdLTuq0eSci/w=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/blog/assets/js/highlight.min.2840b7fccd34145847db71a290569594bdbdb00047097f75d6495d162f5d7dff.js" integrity="sha256-KEC3/M00FFhH23GikFaVlL29sABHCX911kldFi9dff8="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://super-sayuri.github.io/blog/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://super-sayuri.github.io/blog/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://super-sayuri.github.io/blog/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://super-sayuri.github.io/blog/apple-touch-icon.png">
+<link rel="mask-icon" href="https://super-sayuri.github.io/blog/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="如何在rust里读取配置文件" />
+<meta property="og:description" content="如果想看代码直接拉到最后。 程序在不同环境运行很多变量都不同，所以需要配置文件来适配。 rust里从文件读取数据到结构很简单，但是之后呢？ 所以这" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://super-sayuri.github.io/blog/2022/05/18/%E5%A6%82%E4%BD%95%E5%9C%A8rust%E9%87%8C%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-18T21:36:00&#43;08:00" />
+<meta property="article:modified_time" content="2022-05-18T21:36:00&#43;08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="如何在rust里读取配置文件"/>
+<meta name="twitter:description" content="如果想看代码直接拉到最后。 程序在不同环境运行很多变量都不同，所以需要配置文件来适配。 rust里从文件读取数据到结构很简单，但是之后呢？ 所以这"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://super-sayuri.github.io/blog/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "如何在rust里读取配置文件",
+      "item": "https://super-sayuri.github.io/blog/2022/05/18/%E5%A6%82%E4%BD%95%E5%9C%A8rust%E9%87%8C%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "如何在rust里读取配置文件",
+  "name": "如何在rust里读取配置文件",
+  "description": "如果想看代码直接拉到最后。 程序在不同环境运行很多变量都不同，所以需要配置文件来适配。 rust里从文件读取数据到结构很简单，但是之后呢？ 所以这",
+  "keywords": [
+    "rust", "config"
+  ],
+  "articleBody": "如果想看代码直接拉到最后。\n程序在不同环境运行很多变量都不同，所以需要配置文件来适配。\nrust里从文件读取数据到结构很简单，但是之后呢？\n所以这次我们先来考虑配置文件怎么设计\n首先我们应该有一个结构来装所有的配置：\n// in conf.rs pub struct MyConfig {  pub debug: bool, }  pub fn config() - MyConfig {  MyConfig {  debug: true,  } } 之后调用：\n// in main.rs mod conf;  fn main() {  print!(\"debugging: {}\", conf::config().debug); } 看上去是可以了，不过有一个问题：如我我们每次调用config都要新建一个，现在hard code还好，但是如果是从文件或者其他服务读取，消耗也太大了。\n所以我们的思路就是把config初始化好了之后存到内存里，随时随地拿出来使用\n// in conf.rs pub struct MyConfig {  pub debug: bool, }  static CONFIG: MyConfig = MyConfig {debug: true};  pub fn get_config() - MyConfig {  CONFIG } // in main.rs mod conf;  fn main() {  println!(\"debugging: {}\", conf::get_config().debug); } 先别运行，回忆一下rust关于所有权的知识，想想这段代码有没有什么问题？\n有！在get_config()里最后会剥夺CONFIG的所有权，而CONFIG又无法自动copy,所以在下一次调用的时候就无法实现了。所以这里应该改一下：\n// in conf.rs // --snip-- pub fn get_config() - \u0026MyConfig {  \u0026CONFIG } 改成借用应该没问题了吧？\n当然不是。少了生命周期。所有的借用都要考虑生命周期的问题，否则编译器无法知道这个借用原来的值是不是被销毁了。\n由于配置信息的特殊性，这里可以使用'static全局的生命周期，也就是数据会一直放在内存里直到程序结束。不过这里是特殊情况，其他情况还是要考虑生命周期到底是什么，不要一股脑全部都用'static。\n// in conf.rs // --snip-- pub fn get_config() - \u0026'static MyConfig {  \u0026CONFIG } 完美，试着把文件读取也给加进去，不过现在有个小小的问题，CONFIG现在是写死代码初始化的，但是我们需要从文件初始化，也就是给一个参数来定CONFIG的值，该怎么做呢？\n我们先试试这样：\npub fn init(debug: bool) - Result(), i32{  CONFIG.debug = debug;  Ok(()) } 当然不可以，CONFIG是不可变的但是这个函数改变了CONFIG的值。\n那么把CONFIG改成mut不就可以了吗？也不行。\nstatic的变量可以被多个线程同时读取，因此如果改成mut，那么它的线程安全性是无法保障的，因此static mut的声明都会被rust定义为unsafe。我们也别太高估自己了，unsafe的东西不要乱用。\n既然知道了原理，那么就简单了，我们加个锁就可以了。我们将CONFIG变成读写锁模式：\nuse std::sync::RwLock;  // --snip--  static CONFIG: RwLockMyConfig = RwLock::new(MyConfig {debug: true});  pub fn init(debug: bool) - Result(), i32{  let mut c = CONFIG.write().unwrap();  *c = MyConfig{debug};  Ok(()) } 又报错了，原因是对于static只能指定现成的结构或者const 函数，RwLock::New不是，所以说这里不行。\n这里介绍一个工具lazy_static,它可以帮助static对象初始化，而且是lazy loading模式的。具体看这里\n这样，CONFIG就可以这样写：\nlazy_static!{  static ref CONFIG: RwLockMyConfig =  RwLock::new(MyConfig {debug: true}); } get_config()函数我们也应当完善一下\npub fn get_config() - MyConfig {  let g = CONFIG.read().unwrap();  *g } 这里就没有返回一个借用了，而是直接返回CONFIG的copy,别忘了加上#[derive(Clone,Copy)]到 MyConfig的上面。\n看看效果：\nfn main() {  println!(\"debugging: {}\", conf::get_config().debug);  another_use();  let _ = conf::init(false);  println!(\"debugging: {}\", conf::get_config().debug);  another_use(); }  fn another_use() {  println!(\"debug on other place: {}\", conf::get_config().debug); } output:\ndebugging: true debug on other place: true debugging: false debug on other place: false 最终实现 完美，最后我们完善一下，从文件读取\n# in cargo.toml # -snip- [dependencies] lazy_static = \"1.4.0\" serde = { version = \"1.0.137\", features = [\"derive\"] } toml = \"0.5.9\" # in config.toml debug = false info = \"super sayuri\" // conf.rs use std::{sync::RwLock, fs::File, error::Error, io::Read}; use serde::Deserialize; use lazy_static::lazy_static;  #[derive(Deserialize, Clone)] pub struct MyConfig {  pub debug: bool,  pub info: String, // 注意这里不可以使用\u0026str, 借用滚粗struct！ }  lazy_static!{  static ref CONFIG: RwLockMyConfig =  RwLock::new(MyConfig {debug: true, info:String::new()}); }  pub fn init(filename: \u0026str) - Result(), Boxdyn Error {  let mut file = File::open(filename)?;  let mut conf_str = String::new();  file.read_to_string(\u0026mut conf_str)?;  let mut c = CONFIG.write()?;  *c = toml::from_str(\u0026conf_str)?;  Ok(()) }  pub fn get_config() - MyConfig {  let g = CONFIG.read().unwrap();  g.clone() } // in main.rs use std::error::Error;  mod conf;  fn main() - Result(), Boxdyn Error{  println!(\"debugging: {}\", conf::get_config().debug);  another_use();  let _ = conf::init(\"config.local.toml\")?;  println!(\"debugging: {}\", conf::get_config().debug);  another_use();  Ok(()) }  fn another_use() {  println!(\"info: {}\", conf::get_config().info); } ～fin~\n",
+  "wordCount" : "1429",
+  "inLanguage": "en",
+  "datePublished": "2022-05-18T21:36:00+08:00",
+  "dateModified": "2022-05-18T21:36:00+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "超级小百合"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://super-sayuri.github.io/blog/2022/05/18/%E5%A6%82%E4%BD%95%E5%9C%A8rust%E9%87%8C%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "❤小百合❤",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://super-sayuri.github.io/blog/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://super-sayuri.github.io/blog" accesskey="h" title="❤小百合❤ (Alt + H)">❤小百合❤</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://super-sayuri.github.io/blog/categoreis" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://super-sayuri.github.io/blog/tags" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://super-sayuri.github.io/blog/about" title="about">
+                    <span>about</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      如何在rust里读取配置文件
+    </h1>
+    <div class="post-meta"><span title='2022-05-18 21:36:00 +0800 CST'>May 18, 2022</span>&nbsp;·&nbsp;超级小百合
+
+</div>
+  </header> 
+  <div class="post-content"><p>如果想看代码直接拉到最后。</p>
+<p>程序在不同环境运行很多变量都不同，所以需要配置文件来适配。</p>
+<p>rust里从文件读取数据到结构很简单，但是之后呢？</p>
+<p>所以这次我们先来考虑配置文件怎么设计</p>
+<p>首先我们应该有一个结构来装所有的配置：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">// in conf.rs
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">MyConfig</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pub</span> debug: <span style="color:#66d9ef">bool</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">config</span>() -&gt; <span style="color:#a6e22e">MyConfig</span> {
+</span></span><span style="display:flex;"><span>    MyConfig {
+</span></span><span style="display:flex;"><span>        debug: <span style="color:#a6e22e">true</span>,
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>之后调用：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">// in main.rs
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">mod</span> conf;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    print!(<span style="color:#e6db74">&#34;debugging: {}&#34;</span>, conf::config().debug);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>看上去是可以了，不过有一个问题：如我我们每次调用config都要新建一个，现在hard code还好，但是如果是从文件或者其他服务读取，消耗也太大了。</p>
+<p>所以我们的思路就是把config初始化好了之后存到内存里，随时随地拿出来使用</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">// in conf.rs
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">MyConfig</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pub</span> debug: <span style="color:#66d9ef">bool</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">static</span> CONFIG: <span style="color:#a6e22e">MyConfig</span> <span style="color:#f92672">=</span> MyConfig {debug: <span style="color:#a6e22e">true</span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">get_config</span>() -&gt; <span style="color:#a6e22e">MyConfig</span> {
+</span></span><span style="display:flex;"><span>    CONFIG
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">// in main.rs
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">mod</span> conf;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    println!(<span style="color:#e6db74">&#34;debugging: {}&#34;</span>, conf::get_config().debug);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>先别运行，回忆一下rust关于所有权的知识，想想这段代码有没有什么问题？</p>
+<p>有！在get_config()里最后会剥夺CONFIG的所有权，而CONFIG又无法自动copy,所以在下一次调用的时候就无法实现了。所以这里应该改一下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">// in conf.rs
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// --snip--
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">get_config</span>() -&gt; <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">MyConfig</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&amp;</span>CONFIG
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>改成借用应该没问题了吧？</p>
+<p>当然不是。少了生命周期。所有的借用都要考虑生命周期的问题，否则编译器无法知道这个借用原来的值是不是被销毁了。</p>
+<p>由于配置信息的特殊性，这里可以使用<code>'static</code>全局的生命周期，也就是数据会一直放在内存里直到程序结束。不过这里是特殊情况，其他情况还是要考虑生命周期到底是什么，不要一股脑全部都用<code>'static</code>。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">// in conf.rs
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// --snip--
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">get_config</span>() -&gt; <span style="color:#66d9ef">&amp;</span><span style="color:#f92672">&#39;</span>static <span style="color:#a6e22e">MyConfig</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&amp;</span>CONFIG
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>完美，试着把文件读取也给加进去，不过现在有个小小的问题，CONFIG现在是写死代码初始化的，但是我们需要从文件初始化，也就是给一个参数来定CONFIG的值，该怎么做呢？</p>
+<p>我们先试试这样：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">init</span>(debug: <span style="color:#66d9ef">bool</span>) -&gt; Result<span style="color:#f92672">&lt;</span>(), <span style="color:#66d9ef">i32</span><span style="color:#f92672">&gt;</span>{
+</span></span><span style="display:flex;"><span>    CONFIG.debug <span style="color:#f92672">=</span> debug;
+</span></span><span style="display:flex;"><span>    Ok(())
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>当然不可以，CONFIG是不可变的但是这个函数改变了CONFIG的值。</p>
+<p>那么把CONFIG改成mut不就可以了吗？也不行。</p>
+<p>static的变量可以被多个线程同时读取，因此如果改成mut，那么它的线程安全性是无法保障的，因此static mut的声明都会被rust定义为unsafe。我们也别太高估自己了，unsafe的东西不要乱用。</p>
+<p>既然知道了原理，那么就简单了，我们加个锁就可以了。我们将CONFIG变成读写锁模式：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">use</span> std::sync::RwLock;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// --snip--
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">static</span> CONFIG: <span style="color:#a6e22e">RwLock</span><span style="color:#f92672">&lt;</span>MyConfig<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> RwLock::new(MyConfig {debug: <span style="color:#a6e22e">true</span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">init</span>(debug: <span style="color:#66d9ef">bool</span>) -&gt; Result<span style="color:#f92672">&lt;</span>(), <span style="color:#66d9ef">i32</span><span style="color:#f92672">&gt;</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> c <span style="color:#f92672">=</span> CONFIG.write().unwrap();
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">*</span>c <span style="color:#f92672">=</span> MyConfig{debug};
+</span></span><span style="display:flex;"><span>    Ok(())
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>又报错了，原因是对于static只能指定现成的结构或者const 函数，RwLock::New不是，所以说这里不行。</p>
+<p>这里介绍一个工具<code>lazy_static</code>,它可以帮助static对象初始化，而且是lazy loading模式的。<a href="https://crates.io/crates/lazy_static">具体看这里</a></p>
+<p>这样，CONFIG就可以这样写：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span>lazy_static<span style="color:#f92672">!</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">ref</span> CONFIG: <span style="color:#a6e22e">RwLock</span><span style="color:#f92672">&lt;</span>MyConfig<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> 
+</span></span><span style="display:flex;"><span>        RwLock::new(MyConfig {debug: <span style="color:#a6e22e">true</span>});
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>get_config()</code>函数我们也应当完善一下</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">get_config</span>() -&gt; <span style="color:#a6e22e">MyConfig</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> g <span style="color:#f92672">=</span> CONFIG.read().unwrap();
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">*</span>g
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这里就没有返回一个借用了，而是直接返回CONFIG的copy,别忘了加上<code>#[derive(Clone,Copy)]</code>到
+<code>MyConfig</code>的上面。</p>
+<p>看看效果：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    println!(<span style="color:#e6db74">&#34;debugging: {}&#34;</span>, conf::get_config().debug);
+</span></span><span style="display:flex;"><span>    another_use();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> _ <span style="color:#f92672">=</span> conf::init(<span style="color:#66d9ef">false</span>);
+</span></span><span style="display:flex;"><span>    println!(<span style="color:#e6db74">&#34;debugging: {}&#34;</span>, conf::get_config().debug);
+</span></span><span style="display:flex;"><span>    another_use();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">another_use</span>() {
+</span></span><span style="display:flex;"><span>    println!(<span style="color:#e6db74">&#34;debug on other place: {}&#34;</span>, conf::get_config().debug);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>output:</p>
+<pre tabindex="0"><code>debugging: true
+debug on other place: true
+debugging: false
+debug on other place: false
+</code></pre><h3 id="最终实现">最终实现<a hidden class="anchor" aria-hidden="true" href="#最终实现">#</a></h3>
+<p>完美，最后我们完善一下，从文件读取</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#75715e"># in cargo.toml</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -snip-</span>
+</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">dependencies</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">lazy_static</span> = <span style="color:#e6db74">&#34;1.4.0&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">serde</span> = { <span style="color:#a6e22e">version</span> = <span style="color:#e6db74">&#34;1.0.137&#34;</span>, <span style="color:#a6e22e">features</span> = [<span style="color:#e6db74">&#34;derive&#34;</span>] }
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">toml</span> = <span style="color:#e6db74">&#34;0.5.9&#34;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#75715e"># in config.toml</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">debug</span> = <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">info</span> = <span style="color:#e6db74">&#34;super sayuri&#34;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">// conf.rs
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">use</span> std::{sync::RwLock, fs::File, error::Error, io::Read};
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">use</span> serde::Deserialize;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">use</span> lazy_static::lazy_static;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#[derive(Deserialize, Clone)]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">MyConfig</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pub</span> debug: <span style="color:#66d9ef">bool</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pub</span> info: String, <span style="color:#75715e">// 注意这里不可以使用&amp;str, 借用滚粗struct！
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>lazy_static<span style="color:#f92672">!</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">ref</span> CONFIG: <span style="color:#a6e22e">RwLock</span><span style="color:#f92672">&lt;</span>MyConfig<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> 
+</span></span><span style="display:flex;"><span>        RwLock::new(MyConfig {debug: <span style="color:#a6e22e">true</span>, info:String::new()});
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">init</span>(filename: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>) -&gt; Result<span style="color:#f92672">&lt;</span>(), Box<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">dyn</span> Error<span style="color:#f92672">&gt;&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> file <span style="color:#f92672">=</span> File::open(filename)<span style="color:#f92672">?</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> conf_str <span style="color:#f92672">=</span> String::new();
+</span></span><span style="display:flex;"><span>    file.read_to_string(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> conf_str)<span style="color:#f92672">?</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> c <span style="color:#f92672">=</span> CONFIG.write()<span style="color:#f92672">?</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">*</span>c <span style="color:#f92672">=</span> toml::from_str(<span style="color:#f92672">&amp;</span>conf_str)<span style="color:#f92672">?</span>;
+</span></span><span style="display:flex;"><span>    Ok(())
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">get_config</span>() -&gt; <span style="color:#a6e22e">MyConfig</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> g <span style="color:#f92672">=</span> CONFIG.read().unwrap();
+</span></span><span style="display:flex;"><span>    g.clone()
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">// in main.rs
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">use</span> std::error::Error;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">mod</span> conf;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() -&gt; Result<span style="color:#f92672">&lt;</span>(), Box<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">dyn</span> Error<span style="color:#f92672">&gt;&gt;</span>{
+</span></span><span style="display:flex;"><span>    println!(<span style="color:#e6db74">&#34;debugging: {}&#34;</span>, conf::get_config().debug);
+</span></span><span style="display:flex;"><span>    another_use();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> _ <span style="color:#f92672">=</span> conf::init(<span style="color:#e6db74">&#34;config.local.toml&#34;</span>)<span style="color:#f92672">?</span>;
+</span></span><span style="display:flex;"><span>    println!(<span style="color:#e6db74">&#34;debugging: {}&#34;</span>, conf::get_config().debug);
+</span></span><span style="display:flex;"><span>    another_use();
+</span></span><span style="display:flex;"><span>    Ok(())
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">another_use</span>() {
+</span></span><span style="display:flex;"><span>    println!(<span style="color:#e6db74">&#34;info: {}&#34;</span>, conf::get_config().info);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>～fin~</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://super-sayuri.github.io/blog/tags/rust/">rust</a></li>
+      <li><a href="https://super-sayuri.github.io/blog/tags/config/">config</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://super-sayuri.github.io/blog">❤小百合❤</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
