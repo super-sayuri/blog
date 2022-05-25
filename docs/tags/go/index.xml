@@ -6,7 +6,16 @@
     <description>Recent content in go on ❤小百合❤</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 18 May 2022 17:00:20 +0800</lastBuildDate><atom:link href="https://super-sayuri.github.io/blog/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 24 May 2022 11:50:55 +0800</lastBuildDate><atom:link href="https://super-sayuri.github.io/blog/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>go mod包管理以及简易gin配置</title>
+      <link>https://super-sayuri.github.io/blog/2022/05/24/go-mod%E5%8C%85%E7%AE%A1%E7%90%86%E4%BB%A5%E5%8F%8A%E7%AE%80%E6%98%93gin%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Tue, 24 May 2022 11:50:55 +0800</pubDate>
+      
+      <guid>https://super-sayuri.github.io/blog/2022/05/24/go-mod%E5%8C%85%E7%AE%A1%E7%90%86%E4%BB%A5%E5%8F%8A%E7%AE%80%E6%98%93gin%E9%85%8D%E7%BD%AE/</guid>
+      <description>Go mod go mod是go的依赖管理工具，首先我们用go mod新建一个项目： cd project-dir go mod init your.package.path/name 随后可以在目录里找到一个go.mod文件，一开始它长这样： module</description>
+    </item>
+    
     <item>
       <title>go里面使用ed25519签名的注意事项</title>
       <link>https://super-sayuri.github.io/blog/2022/05/18/go%E9%87%8C%E9%9D%A2%E4%BD%BF%E7%94%A8ed25519%E7%AD%BE%E5%90%8D%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</link>

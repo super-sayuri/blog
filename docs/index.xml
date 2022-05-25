@@ -6,7 +6,16 @@
     <description>Recent content on ❤小百合❤</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 18 May 2022 21:36:00 +0800</lastBuildDate><atom:link href="https://super-sayuri.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 24 May 2022 11:50:55 +0800</lastBuildDate><atom:link href="https://super-sayuri.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>go mod包管理以及简易gin配置</title>
+      <link>https://super-sayuri.github.io/blog/2022/05/24/go-mod%E5%8C%85%E7%AE%A1%E7%90%86%E4%BB%A5%E5%8F%8A%E7%AE%80%E6%98%93gin%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Tue, 24 May 2022 11:50:55 +0800</pubDate>
+      
+      <guid>https://super-sayuri.github.io/blog/2022/05/24/go-mod%E5%8C%85%E7%AE%A1%E7%90%86%E4%BB%A5%E5%8F%8A%E7%AE%80%E6%98%93gin%E9%85%8D%E7%BD%AE/</guid>
+      <description>Go mod go mod是go的依赖管理工具，首先我们用go mod新建一个项目： cd project-dir go mod init your.package.path/name 随后可以在目录里找到一个go.mod文件，一开始它长这样： module</description>
+    </item>
+    
     <item>
       <title>如何在rust里读取配置文件</title>
       <link>https://super-sayuri.github.io/blog/2022/05/18/%E5%A6%82%E4%BD%95%E5%9C%A8rust%E9%87%8C%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</link>

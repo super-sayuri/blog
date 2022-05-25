@@ -6,7 +6,43 @@
     <description>Recent content in Tags on ❤小百合❤</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 18 May 2022 21:36:00 +0800</lastBuildDate><atom:link href="https://super-sayuri.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 24 May 2022 11:50:55 +0800</lastBuildDate><atom:link href="https://super-sayuri.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>gin</title>
+      <link>https://super-sayuri.github.io/blog/tags/gin/</link>
+      <pubDate>Tue, 24 May 2022 11:50:55 +0800</pubDate>
+      
+      <guid>https://super-sayuri.github.io/blog/tags/gin/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go</title>
+      <link>https://super-sayuri.github.io/blog/tags/go/</link>
+      <pubDate>Tue, 24 May 2022 11:50:55 +0800</pubDate>
+      
+      <guid>https://super-sayuri.github.io/blog/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>web服务</title>
+      <link>https://super-sayuri.github.io/blog/tags/web%E6%9C%8D%E5%8A%A1/</link>
+      <pubDate>Tue, 24 May 2022 11:50:55 +0800</pubDate>
+      
+      <guid>https://super-sayuri.github.io/blog/tags/web%E6%9C%8D%E5%8A%A1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>依赖配置</title>
+      <link>https://super-sayuri.github.io/blog/tags/%E4%BE%9D%E8%B5%96%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Tue, 24 May 2022 11:50:55 +0800</pubDate>
+      
+      <guid>https://super-sayuri.github.io/blog/tags/%E4%BE%9D%E8%B5%96%E9%85%8D%E7%BD%AE/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>config</title>
       <link>https://super-sayuri.github.io/blog/tags/config/</link>
@@ -49,15 +85,6 @@
       <pubDate>Wed, 18 May 2022 17:00:20 +0800</pubDate>
       
       <guid>https://super-sayuri.github.io/blog/tags/ed25519/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>go</title>
-      <link>https://super-sayuri.github.io/blog/tags/go/</link>
-      <pubDate>Wed, 18 May 2022 17:00:20 +0800</pubDate>
-      
-      <guid>https://super-sayuri.github.io/blog/tags/go/</guid>
       <description></description>
     </item>
     
