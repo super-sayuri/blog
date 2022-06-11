@@ -60,7 +60,7 @@ prefix = "https://discord.gg/"
 title = "Discord"
 
 [params.page.comment]
-enable = false
+enable = true
 
 [params.page.comment.giscus]
 # 你可以参考官方文档来使用下列配置
