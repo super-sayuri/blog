@@ -45,13 +45,22 @@ tileColor = "#da532c"
 [params.home.profile]
 subtitle = "超级无敌可爱的小百合"
 title = "Time to TROLL!"
-avatarURL = "/arisa.jpg"
+avatarURL = "arisa.jpg"
 
 [params.social]
 Telegram = "super_sayuri"
 GitHub = "super-sayuri"
-Discord = "https://discord.gg/WcH3q6UDHV"
 Rss = true
+[params.social.Discord]
+weight = 0
+id = "WcH3q6UDHV"
+# 你的社交链接的前缀
+prefix = "https://discord.gg/"
+# 当鼠标停留在图标上时的提示内容
+title = "Discord"
+
+[params.page.comment]
+enable = false
 
 [params.page.comment.giscus]
 # 你可以参考官方文档来使用下列配置
@@ -79,20 +88,20 @@ url = "https://discord.gg/WcH3q6UDHV"
 [[menu.main]]
 identifier = "posts"
 name = "文章"
-url = "/posts"
+url = "posts/"
 weight = 8
 [[menu.main]]
 identifier = "categories"
 name = "分类"
-url = "/categories"
+url = "categories/"
 weight = 9
 [[menu.main]]
 identifier = "tags"
 name = "标签"
-url = "/tags"
+url = "tags/"
 weight = 10
 [[menu.main]]
 identifier = "关于"
 name = "about"
-url = "/about"
+url = "about/"
 weight = 11
