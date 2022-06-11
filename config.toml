@@ -1,13 +1,18 @@
 baseURL = 'https://super-sayuri.github.io/blog'
-languageCode = 'zh'
+languageCode = 'zh-CN'
 title = '❤小百合❤'
 paginate = 10
-theme = "PaperMod"
+theme = "LoveIt"
 
 enableRobotsTXT = true
 enableEmoji = true
 hasCJKLanguage = true
 publishDir = "docs"
+
+[author]
+name = "超级小百合"
+email = ""
+link = ""
 
 [taxonomies]
 category = "categories"
@@ -19,35 +24,75 @@ posts = '/:year/:month/:day/:title/'
 
 [params]
 author = "超级小百合"
-
 defaultTheme = "auto"
-
-[params.homeInfoParams]
 title = "超级无敌可爱的小百合"
-content = "Time to TROLL!"
-[[params.socialIcons]]
-name = "github"
-url = "https://github.com/super-sayuri"
+description = "Time to TROLL!"
+
+[params.header.title]
+name = "超级无敌可爱的小百合"
+
+[params.app]
+title = "超级无敌可爱的小百合"
+# todo
+# Android 浏览器主题色
+themeColor = "#ffffff"
+# Safari 图标颜色
+iconColor = "#5bbad5"
+# Windows v8-10磁贴颜色
+tileColor = "#da532c"
+# end todo
+
+[params.home.profile]
+subtitle = "超级无敌可爱的小百合"
+title = "Time to TROLL!"
+avatarURL = "/arisa.jpg"
+
+[params.social]
+Telegram = "super_sayuri"
+GitHub = "super-sayuri"
+Discord = "https://discord.gg/WcH3q6UDHV"
+Rss = true
+
+[params.page.comment.giscus]
+# 你可以参考官方文档来使用下列配置
+enable = true
+repo = "super-sayuri/blog"
+repoId = "R_kgDOHWo87g"
+category = "Announcements"
+categoryId = "DIC_kwDOHWo87s4CPmgI"
+# 为空时自动适配当前主题 i18n 配置
+lang = "zh-CN"
+mapping = "pathname"
+reactionsEnabled = "1"
+emitMetadata = "0"
+inputPosition = "bottom"
+lazyLoading = false
+lightTheme = "light"
+darkTheme = "dark"
+
+
 [[params.socialIcons]]
 name = "discord"
 url = "https://discord.gg/WcH3q6UDHV"
-[[params.socialIcons]]
-name = "telegram"
-url = "https://t.me/super_sayuri"
 
 [menu]
 [[menu.main]]
+identifier = "posts"
+name = "文章"
+url = "/posts"
+weight = 8
+[[menu.main]]
 identifier = "categories"
-name = "categories"
-url = "/categoreis"
+name = "分类"
+url = "/categories"
 weight = 9
 [[menu.main]]
 identifier = "tags"
-name = "tags"
+name = "标签"
 url = "/tags"
 weight = 10
 [[menu.main]]
-identifier = "about"
+identifier = "关于"
 name = "about"
 url = "/about"
 weight = 11

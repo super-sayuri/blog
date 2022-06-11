@@ -1,7 +1,7 @@
 ---
-title: "go里面使用ed25519签名的注意事项"
+title: "go使用ed25519签名的注意事项"
 date: 2022-05-18T17:00:20+08:00
-category: "技术"
+categories: ["go"]
 tags: ["go", "加密", "签名", "ed25519"]
 ---
 

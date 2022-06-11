@@ -2,8 +2,9 @@
 title: "rust程序解析参数"
 date: 2022-05-18T18:10:40+08:00
 tags: ["rust","参数","clap"]
-category: "技术"
+categories: ["rust"]
 ---
+## 场景
 
 我们想要rust编写好的程序读取想要的参数，例如这样：
 
@@ -12,6 +13,8 @@ category: "技术"
 ```
 
 在运行的时候会自动读入 _a_ 和 _name_ 的数据。
+
+## 依赖
 
 可以使用[clap](https://crates.io/crates/clap)库来进行操作。
 
@@ -23,6 +26,8 @@ clap = { version = "3.1.18", features = ["derive"] }
 ```
 
 之后可以使用derive或builder的方法来完成，这里简单介绍derive的方法，builder的方法参照[官方的例子](https://github.com/clap-rs/clap/blob/v3.1.18/examples/tutorial_builder/README.md)
+
+## 使用
 
 要接受参数首先要编写一个参数的结构
 
@@ -59,7 +64,7 @@ arg1: SomeType,
 
 [更多参考](https://github.com/clap-rs/clap/blob/v3.1.18/examples/derive_ref/README.md)
 
-### 例子：
+## 例子：
 我们这样定义一个结构：
 
 ```rust

@@ -2,7 +2,7 @@
 title: "go mod包管理以及简易gin配置"
 date: 2022-05-24T11:50:55+08:00
 tags: ["go", "gin", "web服务", "依赖配置"]
-category: "技术"
+categories: ["go"]
 ---
 
 ## Go mod

@@ -1,20 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>依赖配置 on ❤小百合❤</title>
-    <link>https://super-sayuri.github.io/blog/tags/%E4%BE%9D%E8%B5%96%E9%85%8D%E7%BD%AE/</link>
-    <description>Recent content in 依赖配置 on ❤小百合❤</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh</language>
-    <lastBuildDate>Tue, 24 May 2022 11:50:55 +0800</lastBuildDate><atom:link href="https://super-sayuri.github.io/blog/tags/%E4%BE%9D%E8%B5%96%E9%85%8D%E7%BD%AE/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>go mod包管理以及简易gin配置</title>
-      <link>https://super-sayuri.github.io/blog/2022/05/24/go-mod%E5%8C%85%E7%AE%A1%E7%90%86%E4%BB%A5%E5%8F%8A%E7%AE%80%E6%98%93gin%E9%85%8D%E7%BD%AE/</link>
-      <pubDate>Tue, 24 May 2022 11:50:55 +0800</pubDate>
-      
-      <guid>https://super-sayuri.github.io/blog/2022/05/24/go-mod%E5%8C%85%E7%AE%A1%E7%90%86%E4%BB%A5%E5%8F%8A%E7%AE%80%E6%98%93gin%E9%85%8D%E7%BD%AE/</guid>
-      <description>Go mod go mod是go的依赖管理工具，首先我们用go mod新建一个项目： cd project-dir go mod init your.package.path/name 随后可以在目录里找到一个go.mod文件，一开始它长这样： module</description>
-    </item>
-    
-  </channel>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>依赖配置 - Tag - ❤小百合❤</title>
+        <link>/tags/%E4%BE%9D%E8%B5%96%E9%85%8D%E7%BD%AE/</link>
+        <description>依赖配置 - Tag - ❤小百合❤</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 24 May 2022 11:50:55 &#43;0800</lastBuildDate><atom:link href="/tags/%E4%BE%9D%E8%B5%96%E9%85%8D%E7%BD%AE/" rel="self" type="application/rss+xml" /><item>
+    <title>go mod包管理以及简易gin配置</title>
+    <link>/2022/05/24/go-mod%E5%8C%85%E7%AE%A1%E7%90%86%E4%BB%A5%E5%8F%8A%E7%AE%80%E6%98%93gin%E9%85%8D%E7%BD%AE/</link>
+    <pubDate>Tue, 24 May 2022 11:50:55 &#43;0800</pubDate>
+    <author>超级小百合</author>
+    <guid>/2022/05/24/go-mod%E5%8C%85%E7%AE%A1%E7%90%86%E4%BB%A5%E5%8F%8A%E7%AE%80%E6%98%93gin%E9%85%8D%E7%BD%AE/</guid>
+    <description><![CDATA[Go mod go mod是go的依赖管理工具，首先我们用go mod新建一个项目： cd project-dir go mod init your.package.path/name 随后可以在目录里找到一个go.mod文件，一开始它长这样： module]]></description>
+</item>
+</channel>
 </rss>

@@ -1,206 +1,102 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
-
-<head><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
-<title>rust程序解析参数 | ❤小百合❤</title>
-<meta name="keywords" content="rust, 参数, clap">
-<meta name="description" content="我们想要rust编写好的程序读取想要的参数，例如这样： ./rust-bin -a a1 --name name 在运行的时候会自动读入 a 和 name 的数据。 可以使用clap库来进行操作。 首先在Ca">
-<meta name="author" content="超级小百合">
-<link rel="canonical" href="https://super-sayuri.github.io/blog/2022/05/18/rust%E7%A8%8B%E5%BA%8F%E8%A7%A3%E6%9E%90%E5%8F%82%E6%95%B0/">
-<link crossorigin="anonymous" href="/blog/assets/css/stylesheet.min.ec8da366ca2fb647537ccb7a8f6fa5b4e9cd3c7a0d3171dd2d3baad1e49c8bfc.css" integrity="sha256-7I2jZsovtkdTfMt6j2&#43;ltOnNPHoNMXHdLTuq0eSci/w=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/blog/assets/js/highlight.min.2840b7fccd34145847db71a290569594bdbdb00047097f75d6495d162f5d7dff.js" integrity="sha256-KEC3/M00FFhH23GikFaVlL29sABHCX911kldFi9dff8="
-    onload="hljs.initHighlightingOnLoad();"></script>
-<link rel="icon" href="https://super-sayuri.github.io/blog/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://super-sayuri.github.io/blog/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://super-sayuri.github.io/blog/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://super-sayuri.github.io/blog/apple-touch-icon.png">
-<link rel="mask-icon" href="https://super-sayuri.github.io/blog/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
-    </style>
-</noscript><meta property="og:title" content="rust程序解析参数" />
-<meta property="og:description" content="我们想要rust编写好的程序读取想要的参数，例如这样： ./rust-bin -a a1 --name name 在运行的时候会自动读入 a 和 name 的数据。 可以使用clap库来进行操作。 首先在Ca" />
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>rust程序解析参数 - ❤小百合❤</title><meta name="Description" content="Time to TROLL!"><meta property="og:title" content="rust程序解析参数" />
+<meta property="og:description" content="场景 我们想要rust编写好的程序读取想要的参数，例如这样： ./rust-bin -a a1 --name name 在运行的时候会自动读入 a 和 name 的数据。 依赖 可以使用clap库来进行操作。 首" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://super-sayuri.github.io/blog/2022/05/18/rust%E7%A8%8B%E5%BA%8F%E8%A7%A3%E6%9E%90%E5%8F%82%E6%95%B0/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-05-18T18:10:40&#43;08:00" />
-<meta property="article:modified_time" content="2022-05-18T18:10:40&#43;08:00" />
+<meta property="og:url" content="/2022/05/18/rust%E7%A8%8B%E5%BA%8F%E8%A7%A3%E6%9E%90%E5%8F%82%E6%95%B0/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-18T18:10:40+08:00" />
+<meta property="article:modified_time" content="2022-05-18T18:10:40+08:00" /><meta property="og:site_name" content="超级无敌可爱的小百合" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="rust程序解析参数"/>
-<meta name="twitter:description" content="我们想要rust编写好的程序读取想要的参数，例如这样： ./rust-bin -a a1 --name name 在运行的时候会自动读入 a 和 name 的数据。 可以使用clap库来进行操作。 首先在Ca"/>
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [, 
+<meta name="twitter:description" content="场景 我们想要rust编写好的程序读取想要的参数，例如这样： ./rust-bin -a a1 --name name 在运行的时候会自动读入 a 和 name 的数据。 依赖 可以使用clap库来进行操作。 首"/>
+<meta name="application-name" content="超级无敌可爱的小百合">
+<meta name="apple-mobile-web-app-title" content="超级无敌可爱的小百合"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/2022/05/18/rust%E7%A8%8B%E5%BA%8F%E8%A7%A3%E6%9E%90%E5%8F%82%E6%95%B0/" /><link rel="prev" href="/2022/05/18/go%E4%BD%BF%E7%94%A8ed25519%E7%AD%BE%E5%90%8D%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" /><link rel="next" href="/2022/05/18/%E5%A6%82%E4%BD%95%E5%9C%A8rust%E9%87%8C%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "Posts",
-      "item": "https://super-sayuri.github.io/blog/posts/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  3 ,
-      "name": "rust程序解析参数",
-      "item": "https://super-sayuri.github.io/blog/2022/05/18/rust%E7%A8%8B%E5%BA%8F%E8%A7%A3%E6%9E%90%E5%8F%82%E6%95%B0/"
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "rust程序解析参数",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/2022\/05\/18\/rust%E7%A8%8B%E5%BA%8F%E8%A7%A3%E6%9E%90%E5%8F%82%E6%95%B0\/"
+        },"genre": "posts","keywords": "rust, 参数, clap","wordcount":  487 ,
+        "url": "\/2022\/05\/18\/rust%E7%A8%8B%E5%BA%8F%E8%A7%A3%E6%9E%90%E5%8F%82%E6%95%B0\/","datePublished": "2022-05-18T18:10:40+08:00","dateModified": "2022-05-18T18:10:40+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "超级小百合"
+            },"description": ""
     }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "rust程序解析参数",
-  "name": "rust程序解析参数",
-  "description": "我们想要rust编写好的程序读取想要的参数，例如这样： ./rust-bin -a a1 --name name 在运行的时候会自动读入 a 和 name 的数据。 可以使用clap库来进行操作。 首先在Ca",
-  "keywords": [
-    "rust", "参数", "clap"
-  ],
-  "articleBody": "我们想要rust编写好的程序读取想要的参数，例如这样：\n./rust-bin -a a1 --name name 在运行的时候会自动读入 a 和 name 的数据。\n可以使用clap库来进行操作。\n首先在Cargo.toml内引入依赖\n[dependencies] clap = { version = \"3.1.18\", features = [\"derive\"] } 之后可以使用derive或builder的方法来完成，这里简单介绍derive的方法，builder的方法参照官方的例子\n要接受参数首先要编写一个参数的结构\nuse clap::Parser  #[derive(Parser)] #[clap(XXX)] struct Args { } 这里#[derive(Parser)]是必须带的后面的#[clap(XXX)]里可以跟各种参数，例如：\n version: 自动添加 -V 和 –version，返回项目的版本号。 author: 返回项目作者 about: 自动添加 -H 和 –help，返回项目的帮助文档。  以上条目都可以设定自定义值。\n之后对于结构里的每一个数据：\n#[clap(PARAM_ARGS)] arg1: SomeType, 其中，PARAM_ARGS里面比较常用的有：\n short 一键表示名字，默认为第一个字母，可自己指定 long 长名，默认为变量的名字，同样可以自己指定 skip 可忽略 default_value = “SOME VALUE” 默认值  更多参考\n例子： 我们这样定义一个结构：\nuse clap::Parser;  #[derive(Parser)] #[clap(author, version, about)] struct Args {  #[clap(short,long)]  config: String,  #[clap(short,long,default_value=\"key.json\")]  keyfile: String, } 随后调用：\nfn main() {  let args = Args::parse();  println!(\"config: {}, keyfile: {}\", args.config, args.keyfile); } 编译好之后运行：\n./rust-cmd -c CONFIG -k abc.txt 就可以看见输出了。\n参考\n",
-  "wordCount" : "481",
-  "inLanguage": "en",
-  "datePublished": "2022-05-18T18:10:40+08:00",
-  "dateModified": "2022-05-18T18:10:40+08:00",
-  "author":{
-    "@type": "Person",
-    "name": "超级小百合"
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://super-sayuri.github.io/blog/2022/05/18/rust%E7%A8%8B%E5%BA%8F%E8%A7%A3%E6%9E%90%E5%8F%82%E6%95%B0/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "❤小百合❤",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://super-sayuri.github.io/blog/favicon.ico"
-    }
-  }
-}
-</script>
-</head>
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="https://super-sayuri.github.io/blog" accesskey="h" title="❤小百合❤ (Alt + H)">❤小百合❤</a>
-            <span class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </span>
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="❤小百合❤">超级无敌可爱的小百合</a>
         </div>
-        <ul id="menu">
-            <li>
-                <a href="https://super-sayuri.github.io/blog/categoreis" title="categories">
-                    <span>categories</span>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts"> 文章 </a><a class="menu-item" href="/categories"> 分类 </a><a class="menu-item" href="/tags"> 标签 </a><a class="menu-item" href="/about"> about </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a>
-            </li>
-            <li>
-                <a href="https://super-sayuri.github.io/blog/tags" title="tags">
-                    <span>tags</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://super-sayuri.github.io/blog/about" title="about">
-                    <span>about</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<main class="main">
-
-<article class="post-single">
-  <header class="post-header">
-    
-    <h1 class="post-title">
-      rust程序解析参数
-    </h1>
-    <div class="post-meta"><span title='2022-05-18 18:10:40 +0800 CST'>May 18, 2022</span>&nbsp;·&nbsp;超级小百合
-
-</div>
-  </header> 
-  <div class="post-content"><p>我们想要rust编写好的程序读取想要的参数，例如这样：</p>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="❤小百合❤">超级无敌可爱的小百合</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts" title="">文章</a><a class="menu-item" href="/categories" title="">分类</a><a class="menu-item" href="/tags" title="">标签</a><a class="menu-item" href="/about" title="">about</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">rust程序解析参数</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>超级小百合</a></span>&nbsp;<span class="post-category">included in <a href="/categories/rust/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>rust</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-05-18">2022-05-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;487 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#场景">场景</a></li>
+    <li><a href="#依赖">依赖</a></li>
+    <li><a href="#使用">使用</a></li>
+    <li><a href="#例子">例子：</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="场景">场景</h2>
+<p>我们想要rust编写好的程序读取想要的参数，例如这样：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./rust-bin -a a1 --name name
 </span></span></code></pre></div><p>在运行的时候会自动读入 <em>a</em> 和 <em>name</em> 的数据。</p>
-<p>可以使用<a href="https://crates.io/crates/clap">clap</a>库来进行操作。</p>
+<h2 id="依赖">依赖</h2>
+<p>可以使用<a href="https://crates.io/crates/clap" target="_blank" rel="noopener noreffer">clap</a>库来进行操作。</p>
 <p>首先在Cargo.toml内引入依赖</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[<span style="color:#a6e22e">dependencies</span>]
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">clap</span> = { <span style="color:#a6e22e">version</span> = <span style="color:#e6db74">&#34;3.1.18&#34;</span>, <span style="color:#a6e22e">features</span> = [<span style="color:#e6db74">&#34;derive&#34;</span>] }
-</span></span></code></pre></div><p>之后可以使用derive或builder的方法来完成，这里简单介绍derive的方法，builder的方法参照<a href="https://github.com/clap-rs/clap/blob/v3.1.18/examples/tutorial_builder/README.md">官方的例子</a></p>
+</span></span></code></pre></div><p>之后可以使用derive或builder的方法来完成，这里简单介绍derive的方法，builder的方法参照<a href="https://github.com/clap-rs/clap/blob/v3.1.18/examples/tutorial_builder/README.md" target="_blank" rel="noopener noreffer">官方的例子</a></p>
+<h2 id="使用">使用</h2>
 <p>要接受参数首先要编写一个参数的结构</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">use</span> clap::Parser
 </span></span><span style="display:flex;"><span>
@@ -225,8 +121,8 @@
 <li>skip 可忽略</li>
 <li>default_value = &ldquo;SOME VALUE&rdquo; 默认值</li>
 </ul>
-<p><a href="https://github.com/clap-rs/clap/blob/v3.1.18/examples/derive_ref/README.md">更多参考</a></p>
-<h3 id="例子">例子：<a hidden class="anchor" aria-hidden="true" href="#例子">#</a></h3>
+<p><a href="https://github.com/clap-rs/clap/blob/v3.1.18/examples/derive_ref/README.md" target="_blank" rel="noopener noreffer">更多参考</a></p>
+<h2 id="例子">例子：</h2>
 <p>我们这样定义一个结构：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">use</span> clap::Parser;
 </span></span><span style="display:flex;"><span>
@@ -246,89 +142,42 @@
 </span></span></code></pre></div><p>编译好之后运行：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./rust-cmd -c CONFIG -k abc.txt
 </span></span></code></pre></div><p>就可以看见输出了。</p>
-<p><a href="https://github.com/clap-rs/clap/blob/v3.1.18/examples/tutorial_derive/README.md">参考</a></p>
+<p><a href="https://github.com/clap-rs/clap/blob/v3.1.18/examples/tutorial_derive/README.md" target="_blank" rel="noopener noreffer">参考</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-05-18</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/2022/05/18/rust%E7%A8%8B%E5%BA%8F%E8%A7%A3%E6%9E%90%E5%8F%82%E6%95%B0/" data-title="rust程序解析参数" data-hashtags="rust,参数,clap"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/2022/05/18/rust%E7%A8%8B%E5%BA%8F%E8%A7%A3%E6%9E%90%E5%8F%82%E6%95%B0/" data-hashtag="rust"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="/2022/05/18/rust%E7%A8%8B%E5%BA%8F%E8%A7%A3%E6%9E%90%E5%8F%82%E6%95%B0/" data-title="rust程序解析参数"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="/2022/05/18/rust%E7%A8%8B%E5%BA%8F%E8%A7%A3%E6%9E%90%E5%8F%82%E6%95%B0/" data-title="rust程序解析参数"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.0.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="/2022/05/18/rust%E7%A8%8B%E5%BA%8F%E8%A7%A3%E6%9E%90%E5%8F%82%E6%95%B0/" data-title="rust程序解析参数"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
 
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/rust/">rust</a>,&nbsp;<a href="/tags/%E5%8F%82%E6%95%B0/">参数</a>,&nbsp;<a href="/tags/clap/">clap</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
 
-  </div>
+    <div class="post-nav"><a href="/2022/05/18/go%E4%BD%BF%E7%94%A8ed25519%E7%AD%BE%E5%90%8D%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" class="prev" rel="prev" title="go使用ed25519签名的注意事项"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>go使用ed25519签名的注意事项</a>
+            <a href="/2022/05/18/%E5%A6%82%E4%BD%95%E5%9C%A8rust%E9%87%8C%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" class="next" rel="next" title="如何在rust里读取配置文件">如何在rust里读取配置文件<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.99.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">超级小百合</a></span></div>
+        </div>
+    </footer></div>
 
-  <footer class="post-footer">
-    <ul class="post-tags">
-      <li><a href="https://super-sayuri.github.io/blog/tags/rust/">rust</a></li>
-      <li><a href="https://super-sayuri.github.io/blog/tags/%E5%8F%82%E6%95%B0/">参数</a></li>
-      <li><a href="https://super-sayuri.github.io/blog/tags/clap/">clap</a></li>
-    </ul>
-  </footer>
-</article>
-    </main>
-    
-<footer class="footer">
-    <span>&copy; 2022 <a href="https://super-sayuri.github.io/blog">❤小百合❤</a></span>
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
-    </span>
-</footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
-    </svg>
-</a>
-
-<script>
-    let menu = document.getElementById('menu')
-    if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
-    }
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
-
-</script>
-<script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
-
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
-</script>
-</body>
-
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>

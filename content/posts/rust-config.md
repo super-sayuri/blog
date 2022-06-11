@@ -2,8 +2,9 @@
 title: "如何在rust里读取配置文件"
 date: 2022-05-18T21:36:00+08:00
 tags: ["rust", "config"]
-category: "技术"
+categories: ["rust"]
 ---
+## 场景
 
 如果想看代码直接拉到最后。
 
@@ -12,6 +13,8 @@ category: "技术"
 rust里从文件读取数据到结构很简单，但是之后呢？
 
 所以这次我们先来考虑配置文件怎么设计
+
+## 结构
 
 首先我们应该有一个结构来装所有的配置：
 
@@ -39,6 +42,8 @@ fn main() {
 ```
 
 看上去是可以了，不过有一个问题：如我我们每次调用config都要新建一个，现在hard code还好，但是如果是从文件或者其他服务读取，消耗也太大了。
+
+## 放进内存
 
 所以我们的思路就是把config初始化好了之后存到内存里，随时随地拿出来使用
 
@@ -88,6 +93,7 @@ pub fn get_config() -> &'static MyConfig {
     &CONFIG
 }
 ```
+## 从文件读取
 
 完美，试着把文件读取也给加进去，不过现在有个小小的问题，CONFIG现在是写死代码初始化的，但是我们需要从文件初始化，也就是给一个参数来定CONFIG的值，该怎么做呢？
 
@@ -123,6 +129,8 @@ pub fn init(debug: bool) -> Result<(), i32>{
 ```
 
 又报错了，原因是对于static只能指定现成的结构或者const 函数，RwLock::New不是，所以说这里不行。
+
+## lazy_static
 
 这里介绍一个工具`lazy_static`,它可以帮助static对象初始化，而且是lazy loading模式的。[具体看这里](https://crates.io/crates/lazy_static)
 
@@ -169,7 +177,7 @@ debug on other place: true
 debugging: false
 debug on other place: false
 ```
-### 最终实现
+## 最终实现
 完美，最后我们完善一下，从文件读取
 
 ```toml

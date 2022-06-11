@@ -1,47 +1,39 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Posts on ❤小百合❤</title>
-    <link>https://super-sayuri.github.io/blog/posts/</link>
-    <description>Recent content in Posts on ❤小百合❤</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh</language>
-    <lastBuildDate>Tue, 24 May 2022 11:50:55 +0800</lastBuildDate><atom:link href="https://super-sayuri.github.io/blog/posts/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>go mod包管理以及简易gin配置</title>
-      <link>https://super-sayuri.github.io/blog/2022/05/24/go-mod%E5%8C%85%E7%AE%A1%E7%90%86%E4%BB%A5%E5%8F%8A%E7%AE%80%E6%98%93gin%E9%85%8D%E7%BD%AE/</link>
-      <pubDate>Tue, 24 May 2022 11:50:55 +0800</pubDate>
-      
-      <guid>https://super-sayuri.github.io/blog/2022/05/24/go-mod%E5%8C%85%E7%AE%A1%E7%90%86%E4%BB%A5%E5%8F%8A%E7%AE%80%E6%98%93gin%E9%85%8D%E7%BD%AE/</guid>
-      <description>Go mod go mod是go的依赖管理工具，首先我们用go mod新建一个项目： cd project-dir go mod init your.package.path/name 随后可以在目录里找到一个go.mod文件，一开始它长这样： module</description>
-    </item>
-    
-    <item>
-      <title>如何在rust里读取配置文件</title>
-      <link>https://super-sayuri.github.io/blog/2022/05/18/%E5%A6%82%E4%BD%95%E5%9C%A8rust%E9%87%8C%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</link>
-      <pubDate>Wed, 18 May 2022 21:36:00 +0800</pubDate>
-      
-      <guid>https://super-sayuri.github.io/blog/2022/05/18/%E5%A6%82%E4%BD%95%E5%9C%A8rust%E9%87%8C%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</guid>
-      <description>如果想看代码直接拉到最后。 程序在不同环境运行很多变量都不同，所以需要配置文件来适配。 rust里从文件读取数据到结构很简单，但是之后呢？ 所以这</description>
-    </item>
-    
-    <item>
-      <title>rust程序解析参数</title>
-      <link>https://super-sayuri.github.io/blog/2022/05/18/rust%E7%A8%8B%E5%BA%8F%E8%A7%A3%E6%9E%90%E5%8F%82%E6%95%B0/</link>
-      <pubDate>Wed, 18 May 2022 18:10:40 +0800</pubDate>
-      
-      <guid>https://super-sayuri.github.io/blog/2022/05/18/rust%E7%A8%8B%E5%BA%8F%E8%A7%A3%E6%9E%90%E5%8F%82%E6%95%B0/</guid>
-      <description>我们想要rust编写好的程序读取想要的参数，例如这样： ./rust-bin -a a1 --name name 在运行的时候会自动读入 a 和 name 的数据。 可以使用clap库来进行操作。 首先在Ca</description>
-    </item>
-    
-    <item>
-      <title>go里面使用ed25519签名的注意事项</title>
-      <link>https://super-sayuri.github.io/blog/2022/05/18/go%E9%87%8C%E9%9D%A2%E4%BD%BF%E7%94%A8ed25519%E7%AD%BE%E5%90%8D%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</link>
-      <pubDate>Wed, 18 May 2022 17:00:20 +0800</pubDate>
-      
-      <guid>https://super-sayuri.github.io/blog/2022/05/18/go%E9%87%8C%E9%9D%A2%E4%BD%BF%E7%94%A8ed25519%E7%AD%BE%E5%90%8D%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</guid>
-      <description>直接使用ssh-keygen创建出来的ed25519密钥会报错： asn1: structure error: tags don&amp;#39;t match ... 这是因为创建出来的密钥是ssh链接加密而不是真正的密钥对，如果</description>
-    </item>
-    
-  </channel>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>All Posts - ❤小百合❤</title>
+        <link>/posts/</link>
+        <description>All Posts | ❤小百合❤</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 24 May 2022 11:50:55 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>go mod包管理以及简易gin配置</title>
+    <link>/2022/05/24/go-mod%E5%8C%85%E7%AE%A1%E7%90%86%E4%BB%A5%E5%8F%8A%E7%AE%80%E6%98%93gin%E9%85%8D%E7%BD%AE/</link>
+    <pubDate>Tue, 24 May 2022 11:50:55 &#43;0800</pubDate>
+    <author>超级小百合</author>
+    <guid>/2022/05/24/go-mod%E5%8C%85%E7%AE%A1%E7%90%86%E4%BB%A5%E5%8F%8A%E7%AE%80%E6%98%93gin%E9%85%8D%E7%BD%AE/</guid>
+    <description><![CDATA[Go mod go mod是go的依赖管理工具，首先我们用go mod新建一个项目： cd project-dir go mod init your.package.path/name 随后可以在目录里找到一个go.mod文件，一开始它长这样： module]]></description>
+</item>
+<item>
+    <title>如何在rust里读取配置文件</title>
+    <link>/2022/05/18/%E5%A6%82%E4%BD%95%E5%9C%A8rust%E9%87%8C%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</link>
+    <pubDate>Wed, 18 May 2022 21:36:00 &#43;0800</pubDate>
+    <author>超级小百合</author>
+    <guid>/2022/05/18/%E5%A6%82%E4%BD%95%E5%9C%A8rust%E9%87%8C%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</guid>
+    <description><![CDATA[场景 如果想看代码直接拉到最后。 程序在不同环境运行很多变量都不同，所以需要配置文件来适配。 rust里从文件读取数据到结构很简单，但是之后呢？ 所]]></description>
+</item>
+<item>
+    <title>rust程序解析参数</title>
+    <link>/2022/05/18/rust%E7%A8%8B%E5%BA%8F%E8%A7%A3%E6%9E%90%E5%8F%82%E6%95%B0/</link>
+    <pubDate>Wed, 18 May 2022 18:10:40 &#43;0800</pubDate>
+    <author>超级小百合</author>
+    <guid>/2022/05/18/rust%E7%A8%8B%E5%BA%8F%E8%A7%A3%E6%9E%90%E5%8F%82%E6%95%B0/</guid>
+    <description><![CDATA[场景 我们想要rust编写好的程序读取想要的参数，例如这样： ./rust-bin -a a1 --name name 在运行的时候会自动读入 a 和 name 的数据。 依赖 可以使用clap库来进行操作。 首]]></description>
+</item>
+<item>
+    <title>go使用ed25519签名的注意事项</title>
+    <link>/2022/05/18/go%E4%BD%BF%E7%94%A8ed25519%E7%AD%BE%E5%90%8D%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</link>
+    <pubDate>Wed, 18 May 2022 17:00:20 &#43;0800</pubDate>
+    <author>超级小百合</author>
+    <guid>/2022/05/18/go%E4%BD%BF%E7%94%A8ed25519%E7%AD%BE%E5%90%8D%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</guid>
+    <description><![CDATA[直接使用ssh-keygen创建出来的ed25519密钥会报错： asn1: structure error: tags don&#39;t match ... 这是因为创建出来的密钥是ssh链接加密而不是真正的密钥对，如果]]></description>
+</item>
+</channel>
 </rss>
