@@ -1,14 +1,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>config - Tag - ❤小百合❤</title>
-        <link>/tags/config/</link>
+        <link>https://super-sayuri.github.io/blog/tags/config/</link>
         <description>config - Tag - ❤小百合❤</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 18 May 2022 21:36:00 &#43;0800</lastBuildDate><atom:link href="/tags/config/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 18 May 2022 21:36:00 &#43;0800</lastBuildDate><atom:link href="https://super-sayuri.github.io/blog/tags/config/" rel="self" type="application/rss+xml" /><item>
     <title>如何在rust里读取配置文件</title>
-    <link>/2022/05/18/%E5%A6%82%E4%BD%95%E5%9C%A8rust%E9%87%8C%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</link>
+    <link>https://super-sayuri.github.io/blog/2022/05/18/%E5%A6%82%E4%BD%95%E5%9C%A8rust%E9%87%8C%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</link>
     <pubDate>Wed, 18 May 2022 21:36:00 &#43;0800</pubDate>
     <author>超级小百合</author>
-    <guid>/2022/05/18/%E5%A6%82%E4%BD%95%E5%9C%A8rust%E9%87%8C%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</guid>
+    <guid>https://super-sayuri.github.io/blog/2022/05/18/%E5%A6%82%E4%BD%95%E5%9C%A8rust%E9%87%8C%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</guid>
     <description><![CDATA[场景 如果想看代码直接拉到最后。 程序在不同环境运行很多变量都不同，所以需要配置文件来适配。 rust里从文件读取数据到结构很简单，但是之后呢？ 所]]></description>
 </item>
 </channel>

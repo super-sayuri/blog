@@ -1,22 +1,22 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>rust - Tag - ❤小百合❤</title>
-        <link>/tags/rust/</link>
+        <link>https://super-sayuri.github.io/blog/tags/rust/</link>
         <description>rust - Tag - ❤小百合❤</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 18 May 2022 21:36:00 &#43;0800</lastBuildDate><atom:link href="/tags/rust/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 18 May 2022 21:36:00 &#43;0800</lastBuildDate><atom:link href="https://super-sayuri.github.io/blog/tags/rust/" rel="self" type="application/rss+xml" /><item>
     <title>如何在rust里读取配置文件</title>
-    <link>/2022/05/18/%E5%A6%82%E4%BD%95%E5%9C%A8rust%E9%87%8C%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</link>
+    <link>https://super-sayuri.github.io/blog/2022/05/18/%E5%A6%82%E4%BD%95%E5%9C%A8rust%E9%87%8C%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</link>
     <pubDate>Wed, 18 May 2022 21:36:00 &#43;0800</pubDate>
     <author>超级小百合</author>
-    <guid>/2022/05/18/%E5%A6%82%E4%BD%95%E5%9C%A8rust%E9%87%8C%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</guid>
+    <guid>https://super-sayuri.github.io/blog/2022/05/18/%E5%A6%82%E4%BD%95%E5%9C%A8rust%E9%87%8C%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</guid>
     <description><![CDATA[场景 如果想看代码直接拉到最后。 程序在不同环境运行很多变量都不同，所以需要配置文件来适配。 rust里从文件读取数据到结构很简单，但是之后呢？ 所]]></description>
 </item>
 <item>
     <title>rust程序解析参数</title>
-    <link>/2022/05/18/rust%E7%A8%8B%E5%BA%8F%E8%A7%A3%E6%9E%90%E5%8F%82%E6%95%B0/</link>
+    <link>https://super-sayuri.github.io/blog/2022/05/18/rust%E7%A8%8B%E5%BA%8F%E8%A7%A3%E6%9E%90%E5%8F%82%E6%95%B0/</link>
     <pubDate>Wed, 18 May 2022 18:10:40 &#43;0800</pubDate>
     <author>超级小百合</author>
-    <guid>/2022/05/18/rust%E7%A8%8B%E5%BA%8F%E8%A7%A3%E6%9E%90%E5%8F%82%E6%95%B0/</guid>
+    <guid>https://super-sayuri.github.io/blog/2022/05/18/rust%E7%A8%8B%E5%BA%8F%E8%A7%A3%E6%9E%90%E5%8F%82%E6%95%B0/</guid>
     <description><![CDATA[场景 我们想要rust编写好的程序读取想要的参数，例如这样： ./rust-bin -a a1 --name name 在运行的时候会自动读入 a 和 name 的数据。 依赖 可以使用clap库来进行操作。 首]]></description>
 </item>
 </channel>

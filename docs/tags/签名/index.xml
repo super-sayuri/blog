@@ -1,14 +1,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>签名 - Tag - ❤小百合❤</title>
-        <link>/tags/%E7%AD%BE%E5%90%8D/</link>
+        <link>https://super-sayuri.github.io/blog/tags/%E7%AD%BE%E5%90%8D/</link>
         <description>签名 - Tag - ❤小百合❤</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 18 May 2022 17:00:20 &#43;0800</lastBuildDate><atom:link href="/tags/%E7%AD%BE%E5%90%8D/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 18 May 2022 17:00:20 &#43;0800</lastBuildDate><atom:link href="https://super-sayuri.github.io/blog/tags/%E7%AD%BE%E5%90%8D/" rel="self" type="application/rss+xml" /><item>
     <title>go使用ed25519签名的注意事项</title>
-    <link>/2022/05/18/go%E4%BD%BF%E7%94%A8ed25519%E7%AD%BE%E5%90%8D%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</link>
+    <link>https://super-sayuri.github.io/blog/2022/05/18/go%E4%BD%BF%E7%94%A8ed25519%E7%AD%BE%E5%90%8D%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</link>
     <pubDate>Wed, 18 May 2022 17:00:20 &#43;0800</pubDate>
     <author>超级小百合</author>
-    <guid>/2022/05/18/go%E4%BD%BF%E7%94%A8ed25519%E7%AD%BE%E5%90%8D%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</guid>
+    <guid>https://super-sayuri.github.io/blog/2022/05/18/go%E4%BD%BF%E7%94%A8ed25519%E7%AD%BE%E5%90%8D%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</guid>
     <description><![CDATA[直接使用ssh-keygen创建出来的ed25519密钥会报错： asn1: structure error: tags don&#39;t match ... 这是因为创建出来的密钥是ssh链接加密而不是真正的密钥对，如果]]></description>
 </item>
 </channel>

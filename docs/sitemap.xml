@@ -2,25 +2,25 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>/</loc><lastmod>2022-05-24T11:50:55&#43;08:00</lastmod></url><url>
-            <loc>/categories/</loc><lastmod>2022-05-24T11:50:55&#43;08:00</lastmod></url><url>
-            <loc>/tags/gin/</loc><lastmod>2022-05-24T11:50:55&#43;08:00</lastmod></url><url>
-            <loc>/tags/go/</loc><lastmod>2022-05-24T11:50:55&#43;08:00</lastmod></url><url>
-            <loc>/categories/go/</loc><lastmod>2022-05-24T11:50:55&#43;08:00</lastmod></url><url>
-            <loc>/2022/05/24/go-mod%E5%8C%85%E7%AE%A1%E7%90%86%E4%BB%A5%E5%8F%8A%E7%AE%80%E6%98%93gin%E9%85%8D%E7%BD%AE/</loc><lastmod>2022-05-24T11:50:55&#43;08:00</lastmod></url><url>
-            <loc>/posts/</loc><lastmod>2022-05-24T11:50:55&#43;08:00</lastmod></url><url>
-            <loc>/tags/</loc><lastmod>2022-05-24T11:50:55&#43;08:00</lastmod></url><url>
-            <loc>/tags/web%E6%9C%8D%E5%8A%A1/</loc><lastmod>2022-05-24T11:50:55&#43;08:00</lastmod></url><url>
-            <loc>/tags/%E4%BE%9D%E8%B5%96%E9%85%8D%E7%BD%AE/</loc><lastmod>2022-05-24T11:50:55&#43;08:00</lastmod></url><url>
-            <loc>/tags/config/</loc><lastmod>2022-05-18T21:36:00&#43;08:00</lastmod></url><url>
-            <loc>/tags/rust/</loc><lastmod>2022-05-18T21:36:00&#43;08:00</lastmod></url><url>
-            <loc>/categories/rust/</loc><lastmod>2022-05-18T21:36:00&#43;08:00</lastmod></url><url>
-            <loc>/2022/05/18/%E5%A6%82%E4%BD%95%E5%9C%A8rust%E9%87%8C%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</loc><lastmod>2022-05-18T21:36:00&#43;08:00</lastmod></url><url>
-            <loc>/tags/clap/</loc><lastmod>2022-05-18T18:10:40&#43;08:00</lastmod></url><url>
-            <loc>/2022/05/18/rust%E7%A8%8B%E5%BA%8F%E8%A7%A3%E6%9E%90%E5%8F%82%E6%95%B0/</loc><lastmod>2022-05-18T18:10:40&#43;08:00</lastmod></url><url>
-            <loc>/tags/%E5%8F%82%E6%95%B0/</loc><lastmod>2022-05-18T18:10:40&#43;08:00</lastmod></url><url>
-            <loc>/tags/ed25519/</loc><lastmod>2022-05-18T17:00:20&#43;08:00</lastmod></url><url>
-            <loc>/2022/05/18/go%E4%BD%BF%E7%94%A8ed25519%E7%AD%BE%E5%90%8D%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</loc><lastmod>2022-05-18T17:00:20&#43;08:00</lastmod></url><url>
-            <loc>/tags/%E5%8A%A0%E5%AF%86/</loc><lastmod>2022-05-18T17:00:20&#43;08:00</lastmod></url><url>
-            <loc>/tags/%E7%AD%BE%E5%90%8D/</loc><lastmod>2022-05-18T17:00:20&#43;08:00</lastmod></url><url>
-            <loc>/about/</loc></url></urlset>
+            <loc>https://super-sayuri.github.io/blog/</loc><lastmod>2022-05-24T11:50:55&#43;08:00</lastmod></url><url>
+            <loc>https://super-sayuri.github.io/blog/categories/</loc><lastmod>2022-05-24T11:50:55&#43;08:00</lastmod></url><url>
+            <loc>https://super-sayuri.github.io/blog/tags/gin/</loc><lastmod>2022-05-24T11:50:55&#43;08:00</lastmod></url><url>
+            <loc>https://super-sayuri.github.io/blog/tags/go/</loc><lastmod>2022-05-24T11:50:55&#43;08:00</lastmod></url><url>
+            <loc>https://super-sayuri.github.io/blog/categories/go/</loc><lastmod>2022-05-24T11:50:55&#43;08:00</lastmod></url><url>
+            <loc>https://super-sayuri.github.io/blog/2022/05/24/go-mod%E5%8C%85%E7%AE%A1%E7%90%86%E4%BB%A5%E5%8F%8A%E7%AE%80%E6%98%93gin%E9%85%8D%E7%BD%AE/</loc><lastmod>2022-05-24T11:50:55&#43;08:00</lastmod></url><url>
+            <loc>https://super-sayuri.github.io/blog/posts/</loc><lastmod>2022-05-24T11:50:55&#43;08:00</lastmod></url><url>
+            <loc>https://super-sayuri.github.io/blog/tags/</loc><lastmod>2022-05-24T11:50:55&#43;08:00</lastmod></url><url>
+            <loc>https://super-sayuri.github.io/blog/tags/web%E6%9C%8D%E5%8A%A1/</loc><lastmod>2022-05-24T11:50:55&#43;08:00</lastmod></url><url>
+            <loc>https://super-sayuri.github.io/blog/tags/%E4%BE%9D%E8%B5%96%E9%85%8D%E7%BD%AE/</loc><lastmod>2022-05-24T11:50:55&#43;08:00</lastmod></url><url>
+            <loc>https://super-sayuri.github.io/blog/tags/config/</loc><lastmod>2022-05-18T21:36:00&#43;08:00</lastmod></url><url>
+            <loc>https://super-sayuri.github.io/blog/tags/rust/</loc><lastmod>2022-05-18T21:36:00&#43;08:00</lastmod></url><url>
+            <loc>https://super-sayuri.github.io/blog/categories/rust/</loc><lastmod>2022-05-18T21:36:00&#43;08:00</lastmod></url><url>
+            <loc>https://super-sayuri.github.io/blog/2022/05/18/%E5%A6%82%E4%BD%95%E5%9C%A8rust%E9%87%8C%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</loc><lastmod>2022-05-18T21:36:00&#43;08:00</lastmod></url><url>
+            <loc>https://super-sayuri.github.io/blog/tags/clap/</loc><lastmod>2022-05-18T18:10:40&#43;08:00</lastmod></url><url>
+            <loc>https://super-sayuri.github.io/blog/2022/05/18/rust%E7%A8%8B%E5%BA%8F%E8%A7%A3%E6%9E%90%E5%8F%82%E6%95%B0/</loc><lastmod>2022-05-18T18:10:40&#43;08:00</lastmod></url><url>
+            <loc>https://super-sayuri.github.io/blog/tags/%E5%8F%82%E6%95%B0/</loc><lastmod>2022-05-18T18:10:40&#43;08:00</lastmod></url><url>
+            <loc>https://super-sayuri.github.io/blog/tags/ed25519/</loc><lastmod>2022-05-18T17:00:20&#43;08:00</lastmod></url><url>
+            <loc>https://super-sayuri.github.io/blog/2022/05/18/go%E4%BD%BF%E7%94%A8ed25519%E7%AD%BE%E5%90%8D%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</loc><lastmod>2022-05-18T17:00:20&#43;08:00</lastmod></url><url>
+            <loc>https://super-sayuri.github.io/blog/tags/%E5%8A%A0%E5%AF%86/</loc><lastmod>2022-05-18T17:00:20&#43;08:00</lastmod></url><url>
+            <loc>https://super-sayuri.github.io/blog/tags/%E7%AD%BE%E5%90%8D/</loc><lastmod>2022-05-18T17:00:20&#43;08:00</lastmod></url><url>
+            <loc>https://super-sayuri.github.io/blog/about/</loc></url></urlset>
