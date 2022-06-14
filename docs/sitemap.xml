@@ -2,14 +2,20 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://super-sayuri.github.io/blog/</loc><lastmod>2022-05-24T11:50:55&#43;08:00</lastmod></url><url>
-            <loc>https://super-sayuri.github.io/blog/categories/</loc><lastmod>2022-05-24T11:50:55&#43;08:00</lastmod></url><url>
+            <loc>https://super-sayuri.github.io/blog/</loc><lastmod>2022-06-13T13:35:40&#43;08:00</lastmod></url><url>
+            <loc>https://super-sayuri.github.io/blog/categories/</loc><lastmod>2022-06-13T13:35:40&#43;08:00</lastmod></url><url>
+            <loc>https://super-sayuri.github.io/blog/tags/linux/</loc><lastmod>2022-06-13T13:35:40&#43;08:00</lastmod></url><url>
+            <loc>https://super-sayuri.github.io/blog/posts/</loc><lastmod>2022-06-13T13:35:40&#43;08:00</lastmod></url><url>
+            <loc>https://super-sayuri.github.io/blog/tags/</loc><lastmod>2022-06-13T13:35:40&#43;08:00</lastmod></url><url>
+            <loc>https://super-sayuri.github.io/blog/tags/windows/</loc><lastmod>2022-06-13T13:35:40&#43;08:00</lastmod></url><url>
+            <loc>https://super-sayuri.github.io/blog/tags/xmodmap/</loc><lastmod>2022-06-13T13:35:40&#43;08:00</lastmod></url><url>
+            <loc>https://super-sayuri.github.io/blog/2022/06/13/%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E9%94%AE%E7%9B%98%E6%98%A0%E5%B0%84/</loc><lastmod>2022-06-13T13:35:40&#43;08:00</lastmod></url><url>
+            <loc>https://super-sayuri.github.io/blog/categories/%E7%94%9F%E4%BA%A7%E5%8A%9B/</loc><lastmod>2022-06-13T13:35:40&#43;08:00</lastmod></url><url>
+            <loc>https://super-sayuri.github.io/blog/tags/%E9%94%AE%E7%9B%98%E6%98%A0%E5%B0%84/</loc><lastmod>2022-06-13T13:35:40&#43;08:00</lastmod></url><url>
             <loc>https://super-sayuri.github.io/blog/tags/gin/</loc><lastmod>2022-05-24T11:50:55&#43;08:00</lastmod></url><url>
             <loc>https://super-sayuri.github.io/blog/tags/go/</loc><lastmod>2022-05-24T11:50:55&#43;08:00</lastmod></url><url>
             <loc>https://super-sayuri.github.io/blog/categories/go/</loc><lastmod>2022-05-24T11:50:55&#43;08:00</lastmod></url><url>
             <loc>https://super-sayuri.github.io/blog/2022/05/24/go-mod%E5%8C%85%E7%AE%A1%E7%90%86%E4%BB%A5%E5%8F%8A%E7%AE%80%E6%98%93gin%E9%85%8D%E7%BD%AE/</loc><lastmod>2022-05-24T11:50:55&#43;08:00</lastmod></url><url>
-            <loc>https://super-sayuri.github.io/blog/posts/</loc><lastmod>2022-05-24T11:50:55&#43;08:00</lastmod></url><url>
-            <loc>https://super-sayuri.github.io/blog/tags/</loc><lastmod>2022-05-24T11:50:55&#43;08:00</lastmod></url><url>
             <loc>https://super-sayuri.github.io/blog/tags/web%E6%9C%8D%E5%8A%A1/</loc><lastmod>2022-05-24T11:50:55&#43;08:00</lastmod></url><url>
             <loc>https://super-sayuri.github.io/blog/tags/%E4%BE%9D%E8%B5%96%E9%85%8D%E7%BD%AE/</loc><lastmod>2022-05-24T11:50:55&#43;08:00</lastmod></url><url>
             <loc>https://super-sayuri.github.io/blog/tags/config/</loc><lastmod>2022-05-18T21:36:00&#43;08:00</lastmod></url><url>
