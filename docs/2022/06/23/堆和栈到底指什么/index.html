@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>堆和栈到底指什么 - ❤小百合❤</title><meta name="Description" content="Time to TROLL!"><meta property="og:title" content="堆和栈到底指什么" />
+<meta property="og:description" content="程序是如何在内存中分配 当启动一个程序时间，操作系统会给它分配一段连续的内存。这些内存只是在逻辑上连续而非在物理上连续，但是并不影响我们画图示" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://super-sayuri.github.io/blog/2022/06/23/%E5%A0%86%E5%92%8C%E6%A0%88%E5%88%B0%E5%BA%95%E6%8C%87%E4%BB%80%E4%B9%88/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-06-23T15:54:21+08:00" />
+<meta property="article:modified_time" content="2022-06-23T15:54:21+08:00" /><meta property="og:site_name" content="超级无敌可爱的小百合" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="堆和栈到底指什么"/>
+<meta name="twitter:description" content="程序是如何在内存中分配 当启动一个程序时间，操作系统会给它分配一段连续的内存。这些内存只是在逻辑上连续而非在物理上连续，但是并不影响我们画图示"/>
+<meta name="application-name" content="超级无敌可爱的小百合">
+<meta name="apple-mobile-web-app-title" content="超级无敌可爱的小百合"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://super-sayuri.github.io/blog/2022/06/23/%E5%A0%86%E5%92%8C%E6%A0%88%E5%88%B0%E5%BA%95%E6%8C%87%E4%BB%80%E4%B9%88/" /><link rel="prev" href="https://super-sayuri.github.io/blog/2022/06/13/%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E9%94%AE%E7%9B%98%E6%98%A0%E5%B0%84/" /><link rel="stylesheet" href="/blog/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "堆和栈到底指什么",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/super-sayuri.github.io\/blog\/2022\/06\/23\/%E5%A0%86%E5%92%8C%E6%A0%88%E5%88%B0%E5%BA%95%E6%8C%87%E4%BB%80%E4%B9%88\/"
+        },"genre": "posts","keywords": "heap, stack, 内存","wordcount":  2221 ,
+        "url": "https:\/\/super-sayuri.github.io\/blog\/2022\/06\/23\/%E5%A0%86%E5%92%8C%E6%A0%88%E5%88%B0%E5%BA%95%E6%8C%87%E4%BB%80%E4%B9%88\/","datePublished": "2022-06-23T15:54:21+08:00","dateModified": "2022-06-23T15:54:21+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "超级小百合"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/blog/" title="❤小百合❤">超级无敌可爱的小百合</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/blog/posts/"> 文章 </a><a class="menu-item" href="/blog/categories/"> 分类 </a><a class="menu-item" href="/blog/tags/"> 标签 </a><a class="menu-item" href="/blog/about/"> about </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/blog/" title="❤小百合❤">超级无敌可爱的小百合</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/blog/posts/" title="">文章</a><a class="menu-item" href="/blog/categories/" title="">分类</a><a class="menu-item" href="/blog/tags/" title="">标签</a><a class="menu-item" href="/blog/about/" title="">about</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">堆和栈到底指什么</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/blog/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>超级小百合</a></span>&nbsp;<span class="post-category">included in <a href="/blog/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-06-23">2022-06-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2221 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#程序是如何在内存中分配">程序是如何在内存中分配</a></li>
+    <li><a href="#栈-stack">栈 Stack</a></li>
+    <li><a href="#值与引用">值与引用</a></li>
+    <li><a href="#堆-heap">堆 Heap</a>
+      <ul>
+        <li><a href="#切片-slice">切片 slice</a></li>
+        <li><a href="#rust-中的智能指针">rust 中的智能指针</a></li>
+        <li><a href="#垃圾收集">垃圾收集</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="程序是如何在内存中分配">程序是如何在内存中分配</h2>
+<p>当启动一个程序时间，操作系统会给它分配一段连续的内存。这些内存只是在逻辑上连续而非在物理上连续，但是并不影响我们画图示。最开始的地方会储存程序的机器码，也就是编译完成之后机器可以识别并运行的代码，之后会有一段地方来储存程序的全局变量或环境变量。内存的大头是堆和栈，其中栈用于储存函数的信息属于而堆用于储存变量的信息。此外还有额外的一些系统变量。我们画个图大概长这样：</p>
+<p><img
+        class="lazyload"
+        src="/blog/svg/loading.min.svg"
+        data-src="/img/220623/1.png"
+        data-srcset="/img/220623/1.png, /img/220623/1.png 1.5x, /img/220623/1.png 2x"
+        data-sizes="auto"
+        alt="/img/220623/1.png"
+        title="内存图" /></p>
+<p>顺便说以下，虽然各个操作系统和不同语言写的程序在细节上有些微小的差别，例如堆和栈的位置，是否有专门的内存存储全局变量。但是其大致的架构是类似的，这个抽象模型并不影响我们去理解不同语言对于内存的操作。</p>
+<h2 id="栈-stack">栈 Stack</h2>
+<p>我一直觉得Stack翻译成栈增加了理解成本。Stack的意思是一叠，大概想象成很多书叠在一起的样子。数据结构中的Stack就指这样的一个结构，你要存的东西放在这一叠东西的最上面，要度的东西就从这叠东西的最上面那出来一个。</p>
+<p>我们知道内存里堆存放的是函数信息，是怎么存放的呢？其实和数据结构中的栈一样，一个新的函数进来了，就将其放到栈的最上面，函数运行完成了它一定在最上面，所以就把它抽走就可以了。</p>
+<p>很多小朋友这个时候就会说：不对呀，现在线程1起了一个函数放到栈里，线程2也起了一个函数，当线程2的函数还没运行好的时候线程1的函数运行完了，那么它不就不再最上面了吗？</p>
+<p>很好的问题，对于这个问题的解决也很简单，我们只需要将每个线程都弄一个单独的堆就可以了。</p>
+<p>接着就是看看堆上的每块内存里存的是什么东西了。一般来说一个函数会有这些内容：</p>
+<ul>
+<li>函数本身</li>
+<li>函数的参数</li>
+<li>函数里面的变量</li>
+<li>函数返回值</li>
+</ul>
+<p>例如下面的代码(rust)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> b <span style="color:#f92672">=</span> add_one(a);
+</span></span><span style="display:flex;"><span>    println!(<span style="color:#e6db74">&#34;{}&#34;</span>, b)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">add_one</span>(i: <span style="color:#66d9ef">i32</span>) -&gt; <span style="color:#66d9ef">i32</span> {
+</span></span><span style="display:flex;"><span>    i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>首先开始<code>main()</code>函数入栈，里面会有a和b，在b调用函数<code>add_one</code>时，这个函数入栈，其中参数<code>i</code>和返回值都会单独分配内存。等这个函数结束之后销毁<code>add_one</code>的内存，将返回值赋到b上，最后再完成销毁<code>main</code>函数的内存。</p>
+<p>画张图可以这样理解：</p>
+<p><img
+        class="lazyload"
+        src="/blog/svg/loading.min.svg"
+        data-src="/img/220623/2.png"
+        data-srcset="/img/220623/2.png, /img/220623/2.png 1.5x, /img/220623/2.png 2x"
+        data-sizes="auto"
+        alt="/img/220623/2.png"
+        title="/img/220623/2.png" /></p>
+<p>值得注意的是，参数，变量和返回值一般都是分配在不同的内存上，所以在修改一处的时候另一处并不会修改，下面的代码(go)可以说明这个情况:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">See</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">a</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span> <span style="color:#75715e">// 这里的a在See函数的栈上
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">changeA</span>(<span style="color:#a6e22e">a</span>) <span style="color:#75715e">// 这里会把a的值复制给changeA里面的a
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">a</span>) <span style="color:#75715e">// 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">b</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">getB1</span>(<span style="color:#a6e22e">a</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">b</span>) <span style="color:#75715e">// 2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">b</span> = <span style="color:#a6e22e">getB2</span>(<span style="color:#a6e22e">a</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">b</span>) <span style="color:#75715e">// 3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">changeA</span>(<span style="color:#a6e22e">a</span> <span style="color:#66d9ef">int</span>) { <span style="color:#75715e">// 这里a在changeA的参数栈上，和See里面的a没有任何关系
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">a</span> = <span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">a</span>) <span style="color:#75715e">// 2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">getB1</span>(<span style="color:#a6e22e">a</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">b</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#75715e">// 这里b会在getB1的变量里
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">defer</span> <span style="color:#66d9ef">func</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">b</span> = <span style="color:#a6e22e">b</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    }()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">b</span> <span style="color:#75715e">// 这里会复制b的值到返回值内存上，而后面的defer改变的是变量b的值，因此最后返回的值不会变
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">getB2</span>(<span style="color:#a6e22e">a</span> <span style="color:#66d9ef">int</span>) (<span style="color:#a6e22e">b</span>: <span style="color:#66d9ef">int</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">b</span> = <span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#75715e">// 这个b就是返回值的内存
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">defer</span> <span style="color:#66d9ef">func</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">b</span> = <span style="color:#a6e22e">b</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#75715e">// 因为b是返回值的内存，所以这里会改变最后返回的值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">b</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="值与引用">值与引用</h2>
+<p>很多小朋友会说不对呀，为什么我很多时候我在函数里改参数的时候，即使退出了这个函数，值也变化了呢？例如这样(java):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">foo</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> a <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>1<span style="color:#f92672">,</span> 2<span style="color:#f92672">,</span> 3<span style="color:#f92672">};</span>
+</span></span><span style="display:flex;"><span>    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>a<span style="color:#f92672">[</span>0<span style="color:#f92672">]);</span> <span style="color:#75715e">// 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    changeA<span style="color:#f92672">(</span>a<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>a<span style="color:#f92672">[</span>0<span style="color:#f92672">]);</span> <span style="color:#75715e">// 10
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">changeA</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> a<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    a<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 10<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>很好，简单的回答一下：上面的a是引用而不是一个值。</p>
+<p>那么什么是值什么是引用呢？简单的来说，就是一个指向对象内存地址的指针。例如go, rust前面带&amp;的都是一个引用，而java里所有的object都是引用。</p>
+<p>既然是指向内存地址的指针，那么它指向哪里呢？答案是堆上的数据。</p>
+<p>由于栈的大小有限，对于很多很复杂的数据结构，例如数组、map、string 以及自定义的类，这些根本不会在栈里存放完整的数据，而一般是在堆里分配一个数据，之后将其地址储存到栈上。这样，可以有效减少栈的空间。而正因为使用了引用，所以在改变值的时候改变的是堆里数据的值，这个值并不会随着栈的回收而变动，所以对于引用对象的改变自然会反映到值上面。</p>
+<p>不过值的注意的是，上面函数两个a引用值的栈上内存还是不同，所以当改变<code>changA</code>里面a的值并不会反映到<code>foo</code>中a的值，例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">foo</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> a <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>1<span style="color:#f92672">,</span> 2<span style="color:#f92672">,</span> 3<span style="color:#f92672">};</span>
+</span></span><span style="display:flex;"><span>    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>a<span style="color:#f92672">[</span>0<span style="color:#f92672">]);</span> <span style="color:#75715e">// 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    changeA<span style="color:#f92672">(</span>a<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>a<span style="color:#f92672">[</span>0<span style="color:#f92672">]);</span> <span style="color:#75715e">// 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">changeA</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> a<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    a <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>10<span style="color:#f92672">,</span> 11<span style="color:#f92672">,</span> 12<span style="color:#f92672">};</span> <span style="color:#75715e">//这里a分配了新的内存地址，也就是a指针指向的目标改变了，自如不会改变foo中的a
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h2 id="堆-heap">堆 Heap</h2>
+<p>我们现在知道所有的复杂类型都是在堆里分配，知道了这些就能很容易理解很多东西。</p>
+<h3 id="切片-slice">切片 slice</h3>
+<p>go 和 rust 中，数组（array）是定长的，虽然它们也是分配在堆上面，但是它们的传递是值，也就是会进行一个复制，例（go）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span> [<span style="color:#ae81ff">1</span>]<span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">a</span>[<span style="color:#ae81ff">0</span>] = <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">a</span>[<span style="color:#ae81ff">0</span>]) <span style="color:#75715e">// 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">aarrss</span>(<span style="color:#a6e22e">a</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">a</span>[<span style="color:#ae81ff">0</span>]) <span style="color:#75715e">// 还是1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">aarrss</span>(<span style="color:#a6e22e">arr</span> [<span style="color:#ae81ff">0</span>]<span style="color:#66d9ef">int</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">arr</span>[<span style="color:#ae81ff">0</span>] = <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>切片则不一样，切片有三个主要元素：</p>
+<ol>
+<li>一个指向数组的指针</li>
+<li>len，切片的长度</li>
+<li>cap，容量，可以理解为数组的长度，每当切片的长度大于容量的时候就需要扩容了</li>
+</ol>
+<p>所以在改变切片内元素的时候，其实改变的是切片所指向数组的元素，然而切片内指向数组指针不变，所以其数值也会发生变化：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">a</span> <span style="color:#f92672">:=</span> make([]<span style="color:#66d9ef">int</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">a</span>[<span style="color:#ae81ff">0</span>] = <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">a</span>[<span style="color:#ae81ff">0</span>]) <span style="color:#75715e">// 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">aarrss</span>(<span style="color:#a6e22e">a</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">a</span>[<span style="color:#ae81ff">0</span>]) <span style="color:#75715e">// 变了10了哦
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">aarrss</span>(<span style="color:#a6e22e">arr</span> []<span style="color:#66d9ef">int</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">arr</span>[<span style="color:#ae81ff">0</span>] = <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="rust-中的智能指针">rust 中的智能指针</h3>
+<ul>
+<li>Box，可以直接理解为返回对象在堆上的地址</li>
+<li>Rc，加了一个引用的计数器，当计数器变为0的时候会直接把对象内存释放</li>
+<li>Arc，线程安全版的Rc</li>
+</ul>
+<h3 id="垃圾收集">垃圾收集</h3>
+<p>现在写得爽的语言多半都带点垃圾收集，虽然有点性能问题，但是大大提高了开发速度。(虽然一般情况下那种代码质量也达不到性能瓶颈)</p>
+<p>由于栈上的数据都是随着函数的进入和退出而分配和回收的，所以不存在垃圾收集的问题，所以垃圾回收都在堆上。</p>
+<p>垃圾回收的本质都是找到没有引用的元素然后把内存释放，无论是go的三色标记还是java的新生代老生代本质上都是一种找到垃圾未引用空间的算法。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-06-23</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://super-sayuri.github.io/blog/2022/06/23/%E5%A0%86%E5%92%8C%E6%A0%88%E5%88%B0%E5%BA%95%E6%8C%87%E4%BB%80%E4%B9%88/" data-title="堆和栈到底指什么" data-hashtags="heap,stack,内存"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://super-sayuri.github.io/blog/2022/06/23/%E5%A0%86%E5%92%8C%E6%A0%88%E5%88%B0%E5%BA%95%E6%8C%87%E4%BB%80%E4%B9%88/" data-hashtag="heap"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://super-sayuri.github.io/blog/2022/06/23/%E5%A0%86%E5%92%8C%E6%A0%88%E5%88%B0%E5%BA%95%E6%8C%87%E4%BB%80%E4%B9%88/" data-title="堆和栈到底指什么"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://super-sayuri.github.io/blog/2022/06/23/%E5%A0%86%E5%92%8C%E6%A0%88%E5%88%B0%E5%BA%95%E6%8C%87%E4%BB%80%E4%B9%88/" data-title="堆和栈到底指什么"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.0.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://super-sayuri.github.io/blog/2022/06/23/%E5%A0%86%E5%92%8C%E6%A0%88%E5%88%B0%E5%BA%95%E6%8C%87%E4%BB%80%E4%B9%88/" data-title="堆和栈到底指什么"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/blog/tags/heap/">heap</a>,&nbsp;<a href="/blog/tags/stack/">stack</a>,&nbsp;<a href="/blog/tags/%E5%86%85%E5%AD%98/">内存</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/blog/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/blog/2022/06/13/%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E9%94%AE%E7%9B%98%E6%98%A0%E5%B0%84/" class="prev" rel="prev" title="如何设置键盘映射"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>如何设置键盘映射</a></div>
+</div>
+<div id="comments"><div id="giscus" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://giscus.app">Giscus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.101.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/blog/" target="_blank">超级小百合</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"giscus":{"category":"Announcements","categoryId":"DIC_kwDOHWo87s4CPmgI","darkTheme":"dark","emitMetadata":"0","inputPosition":"bottom","lang":"zh-CN","lazyLoading":false,"lightTheme":"light","mapping":"pathname","reactionsEnabled":"1","repo":"super-sayuri/blog","repoId":"R_kgDOHWo87g"}}};</script><script type="text/javascript" src="/blog/js/theme.min.js"></script></body>
+</html>
