@@ -97,10 +97,10 @@
 <p><img
         class="lazyload"
         src="/blog/svg/loading.min.svg"
-        data-src="/img/220623/1.png"
-        data-srcset="/img/220623/1.png, /img/220623/1.png 1.5x, /img/220623/1.png 2x"
+        data-src="/blog/img/220623/1.png"
+        data-srcset="/blog/img/220623/1.png, /blog/img/220623/1.png 1.5x, /blog/img/220623/1.png 2x"
         data-sizes="auto"
-        alt="/img/220623/1.png"
+        alt="/blog/img/220623/1.png"
         title="内存图" /></p>
 <p>顺便说以下，虽然各个操作系统和不同语言写的程序在细节上有些微小的差别，例如堆和栈的位置，是否有专门的内存存储全局变量。但是其大致的架构是类似的，这个抽象模型并不影响我们去理解不同语言对于内存的操作。</p>
 <h2 id="栈-stack">栈 Stack</h2>
@@ -129,11 +129,11 @@
 <p><img
         class="lazyload"
         src="/blog/svg/loading.min.svg"
-        data-src="/img/220623/2.png"
-        data-srcset="/img/220623/2.png, /img/220623/2.png 1.5x, /img/220623/2.png 2x"
+        data-src="/blog/img/220623/2.png"
+        data-srcset="/blog/img/220623/2.png, /blog/img/220623/2.png 1.5x, /blog/img/220623/2.png 2x"
         data-sizes="auto"
-        alt="/img/220623/2.png"
-        title="/img/220623/2.png" /></p>
+        alt="/blog/img/220623/2.png"
+        title="/blog/img/220623/2.png" /></p>
 <p>值得注意的是，参数，变量和返回值一般都是分配在不同的内存上，所以在修改一处的时候另一处并不会修改，下面的代码(go)可以说明这个情况:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">See</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">a</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span> <span style="color:#75715e">// 这里的a在See函数的栈上
