@@ -3,7 +3,15 @@
         <title>All Posts - ❤小百合❤</title>
         <link>https://super-sayuri.github.io/blog/posts/</link>
         <description>All Posts | ❤小百合❤</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 27 Jun 2022 17:46:50 &#43;0800</lastBuildDate><atom:link href="https://super-sayuri.github.io/blog/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 05 Jul 2022 18:05:20 &#43;0800</lastBuildDate><atom:link href="https://super-sayuri.github.io/blog/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>什么是lambda λ</title>
+    <link>https://super-sayuri.github.io/blog/2022/07/05/%E4%BB%80%E4%B9%88%E6%98%AFlambda-%CE%BB/</link>
+    <pubDate>Tue, 05 Jul 2022 18:05:20 &#43;0800</pubDate>
+    <author>超级小百合</author>
+    <guid>https://super-sayuri.github.io/blog/2022/07/05/%E4%BB%80%E4%B9%88%E6%98%AFlambda-%CE%BB/</guid>
+    <description><![CDATA[程序的本质和图灵完备 我们现在的计算机最开始是英国人破译德军密码和美国人为了计算导弹而被设计出来的，它计算起来比人要快多了。运算包括输入的数据]]></description>
+</item>
+<item>
     <title>如何保持中二</title>
     <link>https://super-sayuri.github.io/blog/2022/06/27/%E5%A6%82%E4%BD%95%E4%BF%9D%E6%8C%81%E4%B8%AD%E4%BA%8C/</link>
     <pubDate>Mon, 27 Jun 2022 17:46:50 &#43;0800</pubDate>

@@ -3,7 +3,15 @@
         <title>编程 - Category - ❤小百合❤</title>
         <link>https://super-sayuri.github.io/blog/categories/%E7%BC%96%E7%A8%8B/</link>
         <description>编程 - Category - ❤小百合❤</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 23 Jun 2022 15:54:21 &#43;0800</lastBuildDate><atom:link href="https://super-sayuri.github.io/blog/categories/%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 05 Jul 2022 18:05:20 &#43;0800</lastBuildDate><atom:link href="https://super-sayuri.github.io/blog/categories/%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+    <title>什么是lambda λ</title>
+    <link>https://super-sayuri.github.io/blog/2022/07/05/%E4%BB%80%E4%B9%88%E6%98%AFlambda-%CE%BB/</link>
+    <pubDate>Tue, 05 Jul 2022 18:05:20 &#43;0800</pubDate>
+    <author>超级小百合</author>
+    <guid>https://super-sayuri.github.io/blog/2022/07/05/%E4%BB%80%E4%B9%88%E6%98%AFlambda-%CE%BB/</guid>
+    <description><![CDATA[程序的本质和图灵完备 我们现在的计算机最开始是英国人破译德军密码和美国人为了计算导弹而被设计出来的，它计算起来比人要快多了。运算包括输入的数据]]></description>
+</item>
+<item>
     <title>堆和栈到底指什么</title>
     <link>https://super-sayuri.github.io/blog/2022/06/23/%E5%A0%86%E5%92%8C%E6%A0%88%E5%88%B0%E5%BA%95%E6%8C%87%E4%BB%80%E4%B9%88/</link>
     <pubDate>Thu, 23 Jun 2022 15:54:21 &#43;0800</pubDate>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>什么是lambda λ - ❤小百合❤</title><meta name="Description" content="Time to TROLL!"><meta property="og:title" content="什么是lambda λ" />
+<meta property="og:description" content="程序的本质和图灵完备 我们现在的计算机最开始是英国人破译德军密码和美国人为了计算导弹而被设计出来的，它计算起来比人要快多了。运算包括输入的数据" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://super-sayuri.github.io/blog/2022/07/05/%E4%BB%80%E4%B9%88%E6%98%AFlambda-%CE%BB/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-07-05T18:05:20+08:00" />
+<meta property="article:modified_time" content="2022-07-05T18:05:20+08:00" /><meta property="og:site_name" content="超级无敌可爱的小百合" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="什么是lambda λ"/>
+<meta name="twitter:description" content="程序的本质和图灵完备 我们现在的计算机最开始是英国人破译德军密码和美国人为了计算导弹而被设计出来的，它计算起来比人要快多了。运算包括输入的数据"/>
+<meta name="application-name" content="超级无敌可爱的小百合">
+<meta name="apple-mobile-web-app-title" content="超级无敌可爱的小百合"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://super-sayuri.github.io/blog/2022/07/05/%E4%BB%80%E4%B9%88%E6%98%AFlambda-%CE%BB/" /><link rel="prev" href="https://super-sayuri.github.io/blog/2022/06/27/%E5%A6%82%E4%BD%95%E4%BF%9D%E6%8C%81%E4%B8%AD%E4%BA%8C/" /><link rel="stylesheet" href="/blog/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "什么是lambda λ",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/super-sayuri.github.io\/blog\/2022\/07\/05\/%E4%BB%80%E4%B9%88%E6%98%AFlambda-%CE%BB\/"
+        },"genre": "posts","keywords": "λ, 函数式编程, lambda","wordcount":  2070 ,
+        "url": "https:\/\/super-sayuri.github.io\/blog\/2022\/07\/05\/%E4%BB%80%E4%B9%88%E6%98%AFlambda-%CE%BB\/","datePublished": "2022-07-05T18:05:20+08:00","dateModified": "2022-07-05T18:05:20+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "超级小百合"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/blog/" title="❤小百合❤">超级无敌可爱的小百合</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/blog/posts/"> 文章 </a><a class="menu-item" href="/blog/categories/"> 分类 </a><a class="menu-item" href="/blog/tags/"> 标签 </a><a class="menu-item" href="/blog/about/"> about </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/blog/" title="❤小百合❤">超级无敌可爱的小百合</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/blog/posts/" title="">文章</a><a class="menu-item" href="/blog/categories/" title="">分类</a><a class="menu-item" href="/blog/tags/" title="">标签</a><a class="menu-item" href="/blog/about/" title="">about</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">什么是lambda λ</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/blog/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>超级小百合</a></span>&nbsp;<span class="post-category">included in <a href="/blog/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-05">2022-07-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2070 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#程序的本质和图灵完备">程序的本质和图灵完备</a></li>
+    <li><a href="#λ演算λ-calculus是什么">λ演算（λ calculus）是什么？</a>
+      <ul>
+        <li><a href="#如何构建-lambda">如何构建 lambda</a></li>
+        <li><a href="#α-变换-和-β-归约">α-变换 和 β-归约</a></li>
+      </ul>
+    </li>
+    <li><a href="#开始用-lambda-写算法吧">开始用 lambda 写算法吧</a>
+      <ul>
+        <li><a href="#数字与加减乘除">数字与加减乘除</a></li>
+        <li><a href="#布尔值和条件">布尔值和条件</a></li>
+        <li><a href="#递归">递归</a></li>
+      </ul>
+    </li>
+    <li><a href="#所以说λ有什么用">所以说λ有什么用？</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="程序的本质和图灵完备">程序的本质和图灵完备</h2>
+<p>我们现在的计算机最开始是英国人破译德军密码和美国人为了计算导弹而被设计出来的，它计算起来比人要快多了。运算包括输入的数据，运算的方法和输出的数据。所谓的程序就是一系列运算序列打个包，你只需要输入数据它就自动给你输出。程序的本质就是换着各种姿势给你计算。</p>
+<p>那么就延伸出来一个问题：什么是程序能解决的，什么是程序不能解决的？</p>
+<p>这里引入一个图灵机的概念。图灵机其实并不是一种机器，而是图灵提出来的一种抽象概念，图灵机包括：</p>
+<ol>
+<li>一条无限长的纸带，纸带分成小格子，每个格子上只能在一个有限集的字符里选一个字符打印</li>
+<li>有一个指针能任意在纸带上移动并读写纸带上的内容</li>
+<li>一个寄存器来记录图灵机当前的状态，这个状态是有限的，并且有一个特殊状态使图灵机停机</li>
+<li>一套规则告诉指针在读到每个符号之后做什么，这其中包括读写当前值、移动和改变寄存器的值</li>
+</ol>
+<p>任何能够抽象成一个图灵机的东西就是图灵完备的。说得再具体一点，由于我们所用的各类主流程序语言都是图灵完备的，也就是所有能编成主流程序语言的东西都是图灵完备的。极端点的 Brainfuck 语言就直接把图灵机写到脸上了。除了各类程序语言，像是生命游戏、细胞自动机等和程序无关的东西也都是图灵完备的。</p>
+<p>所有图灵机能解决的问题都是程序能解决的，虽然说图灵完备和可计算性有一点差别，不过这里可以忽略不计。</p>
+<h2 id="λ演算λ-calculus是什么">λ演算（λ calculus）是什么？</h2>
+<p>言归正传，λ calculus ，也就是我们常说的 lambda 就是图灵完备的。也就是λ是通过某种方法来实现我们现在其他语言写的所有功能。</p>
+<p>那么什么是 lambda呢？</p>
+<h3 id="如何构建-lambda">如何构建 lambda</h3>
+<ol>
+<li>一个变量 x 是 lambda</li>
+<li>一个完整的函数定义 λx.M 是 lambda， 其中 M 是一個 lambda 项，其中的 x 都会绑定为变量 x</li>
+<li>一个函数的应用 M N 是 lambda，当然 M 和 N 都是lambda项。</li>
+</ol>
+<p>以上三个规则构建出来的就是一个 lambda，例如：λx.λy.(λz.(λx.zx)(λy.zy))(x y)，一个 lambda中如果括号删去没有歧义，则可以省略。</p>
+<h3 id="α-变换-和-β-归约">α-变换 和 β-归约</h3>
+<p>这两条是 lambda 的基础运算规则</p>
+<p>α-变换指的是 lambda λx.M[x] 中，所有 x 可以换成其他字符y，最后变为 λy.M[y]。例如 λx.xy 和 λa.ay 是完全一样的式子</p>
+<p>β-归约的意思是 lambda λx.M E 中，x 可以替换成 E，变成式子 M[x:=E]。例如 λx.λy.x λa.a 就可以变为 λy.λa.a</p>
+<h2 id="开始用-lambda-写算法吧">开始用 lambda 写算法吧</h2>
+<p>好了，你现在已经知道所有 lambda 的基础了，介于 lambda 是图灵完备的，试着用它写程序吧。</p>
+<h3 id="数字与加减乘除">数字与加减乘除</h3>
+<p>首先，自然数是这样的：</p>
+<ul>
+<li>有一个元数0</li>
+<li>每个自然数 n 都有一个后继 n&rsquo;，并且0不是任何自然数的后继</li>
+<li>如果 a 的后继 a&rsquo; 和 b 的后继 b&rsquo; 相等，那么 a 和 b 也相等</li>
+</ul>
+<p>根据这套规则，我们现用 lambda 构建数字0：</p>
+<pre tabindex="0"><code>0 = λf.λx.x
+</code></pre><p>同时定义后继函数：</p>
+<pre tabindex="0"><code>SUCC = λn.λf.λx.f(n f x)
+</code></pre><p>很自然，我们可以算出0的后继0&rsquo;，即1：</p>
+<pre tabindex="0"><code>1 = SUCC 0 = λn.λf.λx.f(n f x) λf.λx.x = λf.λx.f(λf.λx.x f x) = λf.λx.f(x) = λf.λx.f x
+</code></pre><p>继而可以计算出2、3等等等等：</p>
+<pre tabindex="0"><code>2 = λf.λx.f (f x)
+3 = λf.λx.f (f (f x))
+...
+</code></pre><p>（以上所算出来的数字叫做丘奇数<code>Church encoding</code>）</p>
+<p>之后可以定义减法、乘法和指数：</p>
+<pre tabindex="0"><code>ADD = λm.λn.λf.λx.m f (n f x)
+MUL = λm.λn.λf.n (m f)
+EXP = λm.λn.n m
+</code></pre><p>减法和除法、取余虽然也可以定义，但是由于其在自然数上不是完备的，所以这里就写了，有兴趣可以自己去找以下。</p>
+<h3 id="布尔值和条件">布尔值和条件</h3>
+<p>和上面的方法一样，先定义 TRUE 和 FALSE</p>
+<pre tabindex="0"><code>TRUE = λa.λb.a
+FALSE = λa.λb.b
+</code></pre><p>我们可以简单理解 TRUE 就是两个参数选第一个， FALSE 就是两个参数选后一个。很多小朋友可能发现了，FALSE 的写法根据 α-变换可以编成数字0，没错，FALSE 和数字0就是一个东西。</p>
+<p>之后是布尔运算：</p>
+<pre tabindex="0"><code>AND = λp.λq.p q p
+OR = λp.λq.p p q
+NOT = λp.p FALSE TRUE
+</code></pre><p>最后还有一个比较重要的，就是条件选择语句 IFTHENELSE，可以理解为c语言的 <code>:?</code> 运算符。</p>
+<pre tabindex="0"><code>IFTHENELSE = λp.λa.λb.p a b
+</code></pre><h3 id="递归">递归</h3>
+<p>虽然说表面上 lambda 不能递归，其实不然，看看这个：</p>
+<pre tabindex="0"><code>λx.x x λx.x x
+</code></pre><p>以上这个式子运算一遍就会发现得到的结果就是它本身，我们再看另一个例子：</p>
+<pre tabindex="0"><code>Y = λg.(λx.g(x x)) (λx.g(x x))
+</code></pre><p>当我们把g本身作为参数传进去的时候就会发现：</p>
+<pre tabindex="0"><code>Y g = λh.(λx.h(x x)) (λx.g(x x)) g
+= λx.g(x x) λx.g(x x)
+= g(λx.g(x x) λx.g(x x))
+= g (Y g)
+</code></pre><p>可以看到，调用g的结果等于g调用了自身。</p>
+<h2 id="所以说λ有什么用">所以说λ有什么用？</h2>
+<p>从上面我们可以看出，lambda 拥有了位运算、条件判断、递归循环这三个特性，也就是现在所有的程序都可以用 lambda 重写。事实上，lisp 作为一个以 lambda 为基础的语言在1958年就已经发明出来，仅次与 fortan。同时，python, javascript, ruby 等高级的语言也吸收了 lambda 的特性，更别提 haskell, scala 这样的纯函数语言。</p>
+<p>lambda 为基础的函数式编程在处理大数据、高并法下是很有优势的。很多语言的优化中都提到如果可以使用 lambda， 那么最好都使用 lambda。了解 lambda 最起码能让你看懂更多的代码。</p>
+<p>对了，下一期会说一下函数式编程里面的各种奇怪的方法是干什么的。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-07-05</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://super-sayuri.github.io/blog/2022/07/05/%E4%BB%80%E4%B9%88%E6%98%AFlambda-%CE%BB/" data-title="什么是lambda λ" data-hashtags="λ,函数式编程,lambda"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://super-sayuri.github.io/blog/2022/07/05/%E4%BB%80%E4%B9%88%E6%98%AFlambda-%CE%BB/" data-hashtag="λ"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://super-sayuri.github.io/blog/2022/07/05/%E4%BB%80%E4%B9%88%E6%98%AFlambda-%CE%BB/" data-title="什么是lambda λ"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://super-sayuri.github.io/blog/2022/07/05/%E4%BB%80%E4%B9%88%E6%98%AFlambda-%CE%BB/" data-title="什么是lambda λ"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.0.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://super-sayuri.github.io/blog/2022/07/05/%E4%BB%80%E4%B9%88%E6%98%AFlambda-%CE%BB/" data-title="什么是lambda λ"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/blog/tags/%CE%BB/">λ</a>,&nbsp;<a href="/blog/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/">函数式编程</a>,&nbsp;<a href="/blog/tags/lambda/">lambda</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/blog/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/blog/2022/06/27/%E5%A6%82%E4%BD%95%E4%BF%9D%E6%8C%81%E4%B8%AD%E4%BA%8C/" class="prev" rel="prev" title="如何保持中二"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>如何保持中二</a></div>
+</div>
+<div id="comments"><div id="giscus" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://giscus.app">Giscus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.101.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/blog/" target="_blank">超级小百合</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"giscus":{"category":"Announcements","categoryId":"DIC_kwDOHWo87s4CPmgI","darkTheme":"dark","emitMetadata":"0","inputPosition":"bottom","lang":"zh-CN","lazyLoading":false,"lightTheme":"light","mapping":"pathname","reactionsEnabled":"1","repo":"super-sayuri/blog","repoId":"R_kgDOHWo87g"}}};</script><script type="text/javascript" src="/blog/js/theme.min.js"></script></body>
+</html>
