@@ -3,9 +3,17 @@
         <title>❤小百合❤</title>
         <link>https://super-sayuri.github.io/blog/</link>
         <description>Time to TROLL!</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 05 Jul 2022 18:05:20 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 13 Jul 2022 16:51:15 &#43;0800</lastBuildDate>
             <atom:link href="https://super-sayuri.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>JAVA常用的函数式编成函数</title>
+    <link>https://super-sayuri.github.io/blog/2022/07/13/java%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E6%88%90%E5%87%BD%E6%95%B0/</link>
+    <pubDate>Wed, 13 Jul 2022 16:51:15 &#43;0800</pubDate>
+    <author>超级小百合</author>
+    <guid>https://super-sayuri.github.io/blog/2022/07/13/java%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E6%88%90%E5%87%BD%E6%95%B0/</guid>
+    <description><![CDATA[简单地介绍一下函数式编程的一些常用数据处理，虽然这里用的是 java，但是其他的函数式编程也大同小异。 // 以下的 s 都是这个 Stream&lt;String&gt; s = Stream.of(&#34;h&#34;, &#34;el&#34;, &#34;llo&#34;); 遍历 foreach 遍历]]></description>
+</item>
+<item>
     <title>什么是lambda λ</title>
     <link>https://super-sayuri.github.io/blog/2022/07/05/%E4%BB%80%E4%B9%88%E6%98%AFlambda-%CE%BB/</link>
     <pubDate>Tue, 05 Jul 2022 18:05:20 &#43;0800</pubDate>

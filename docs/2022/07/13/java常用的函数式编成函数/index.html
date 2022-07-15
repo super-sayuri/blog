@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>JAVA常用的函数式编成函数 - ❤小百合❤</title><meta name="Description" content="Time to TROLL!"><meta property="og:title" content="JAVA常用的函数式编成函数" />
+<meta property="og:description" content="简单地介绍一下函数式编程的一些常用数据处理，虽然这里用的是 java，但是其他的函数式编程也大同小异。 // 以下的 s 都是这个 Stream&lt;String&gt; s = Stream.of(&#34;h&#34;, &#34;el&#34;, &#34;llo&#34;); 遍历 foreach 遍历" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://super-sayuri.github.io/blog/2022/07/13/java%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E6%88%90%E5%87%BD%E6%95%B0/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-07-13T16:51:15+08:00" />
+<meta property="article:modified_time" content="2022-07-13T16:51:15+08:00" /><meta property="og:site_name" content="超级无敌可爱的小百合" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="JAVA常用的函数式编成函数"/>
+<meta name="twitter:description" content="简单地介绍一下函数式编程的一些常用数据处理，虽然这里用的是 java，但是其他的函数式编程也大同小异。 // 以下的 s 都是这个 Stream&lt;String&gt; s = Stream.of(&#34;h&#34;, &#34;el&#34;, &#34;llo&#34;); 遍历 foreach 遍历"/>
+<meta name="application-name" content="超级无敌可爱的小百合">
+<meta name="apple-mobile-web-app-title" content="超级无敌可爱的小百合"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://super-sayuri.github.io/blog/2022/07/13/java%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E6%88%90%E5%87%BD%E6%95%B0/" /><link rel="prev" href="https://super-sayuri.github.io/blog/2022/07/05/%E4%BB%80%E4%B9%88%E6%98%AFlambda-%CE%BB/" /><link rel="stylesheet" href="/blog/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "JAVA常用的函数式编成函数",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/super-sayuri.github.io\/blog\/2022\/07\/13\/java%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E6%88%90%E5%87%BD%E6%95%B0\/"
+        },"genre": "posts","keywords": "函数式编程, lambda, java","wordcount":  681 ,
+        "url": "https:\/\/super-sayuri.github.io\/blog\/2022\/07\/13\/java%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E6%88%90%E5%87%BD%E6%95%B0\/","datePublished": "2022-07-13T16:51:15+08:00","dateModified": "2022-07-13T16:51:15+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "超级小百合"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/blog/" title="❤小百合❤">超级无敌可爱的小百合</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/blog/posts/"> 文章 </a><a class="menu-item" href="/blog/categories/"> 分类 </a><a class="menu-item" href="/blog/tags/"> 标签 </a><a class="menu-item" href="/blog/about/"> about </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/blog/" title="❤小百合❤">超级无敌可爱的小百合</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/blog/posts/" title="">文章</a><a class="menu-item" href="/blog/categories/" title="">分类</a><a class="menu-item" href="/blog/tags/" title="">标签</a><a class="menu-item" href="/blog/about/" title="">about</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">JAVA常用的函数式编成函数</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/blog/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>超级小百合</a></span>&nbsp;<span class="post-category">included in <a href="/blog/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-13">2022-07-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;681 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#遍历">遍历</a>
+      <ul>
+        <li><a href="#foreach">foreach</a></li>
+        <li><a href="#peek">peek</a></li>
+      </ul>
+    </li>
+    <li><a href="#映射">映射</a>
+      <ul>
+        <li><a href="#map">map</a></li>
+        <li><a href="#flatmap">flatmap</a></li>
+        <li><a href="#mapmulti">mapMulti</a></li>
+      </ul>
+    </li>
+    <li><a href="#筛选">筛选</a>
+      <ul>
+        <li><a href="#filter">filter</a></li>
+        <li><a href="#limit">limit</a></li>
+        <li><a href="#skip">skip</a></li>
+        <li><a href="#takewhile">takeWhile</a></li>
+        <li><a href="#dropwhile">dropWhile</a></li>
+        <li><a href="#distinct">distinct</a></li>
+      </ul>
+    </li>
+    <li><a href="#排序与查找">排序与查找</a>
+      <ul>
+        <li><a href="#sorted">sorted</a></li>
+        <li><a href="#allmatch-anymatch-nonematch">allMatch, anyMatch, noneMatch</a></li>
+        <li><a href="#count">count</a></li>
+        <li><a href="#findany-findfirst">findAny, findFirst</a></li>
+        <li><a href="#max-min">max, min</a></li>
+      </ul>
+    </li>
+    <li><a href="#reduce">reduce</a></li>
+    <li><a href="#收集">收集</a>
+      <ul>
+        <li><a href="#collect">collect</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>简单地介绍一下函数式编程的一些常用数据处理，虽然这里用的是 java，但是其他的函数式编程也大同小异。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// 以下的 s 都是这个
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Stream<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> s <span style="color:#f92672">=</span> Stream<span style="color:#f92672">.</span><span style="color:#a6e22e">of</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;h&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;el&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;llo&#34;</span><span style="color:#f92672">);</span>
+</span></span></code></pre></div><h2 id="遍历">遍历</h2>
+<h3 id="foreach">foreach</h3>
+<p>遍历所有的元素，对它做想做的事情：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Stream s
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>s<span style="color:#f92672">.</span><span style="color:#a6e22e">foreach</span><span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>    ele <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ele<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">);</span>
+</span></span></code></pre></div><h3 id="peek">peek</h3>
+<p>对第一个对象进行操作。</p>
+<h2 id="映射">映射</h2>
+<h3 id="map">map</h3>
+<p>A 是原集合， 通过计算 A 中的每个元素 a 都可以便成 B 集合中一个元素 b，这种 A -&gt; B 的映射关系可以用 map 来实现。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Stream&lt;String&gt; s
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>String<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> si <span style="color:#f92672">=</span> s<span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>    ele <span style="color:#f92672">-&gt;</span> ele<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">)</span> <span style="color:#75715e">// 1, 2, 3
+</span></span></span></code></pre></div><h3 id="flatmap">flatmap</h3>
+<p>如果 A 中的元素 a 通过运算之后结果是个集合 A‘， flatMap 的作用就是输出所有 A’ 里元素展开的集合 B。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Stream&lt;String&gt; s
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>s<span style="color:#f92672">.</span><span style="color:#a6e22e">flatMap</span><span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>    ele <span style="color:#f92672">-&gt;</span> Stream<span style="color:#f92672">.</span><span style="color:#a6e22e">of</span><span style="color:#f92672">(</span>ele<span style="color:#f92672">.</span><span style="color:#a6e22e">toCharArray</span><span style="color:#f92672">())</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">);</span> <span style="color:#75715e">// &#39;h&#39;, &#39;e&#39;, &#39;l&#39;, &#39;l&#39;, &#39;l&#39;, &#39;o&#39;
+</span></span></span></code></pre></div><h3 id="mapmulti">mapMulti</h3>
+<p>和 flatMap 类似，但是自定义化更强，消耗也更少。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Stream&lt;String&gt; s
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>s<span style="color:#f92672">.</span><span style="color:#a6e22e">mapMulti</span><span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">(</span>ele<span style="color:#f92672">,</span> c<span style="color:#f92672">)</span> <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        c<span style="color:#f92672">.</span><span style="color:#a6e22e">accept</span><span style="color:#f92672">(</span>ele<span style="color:#f92672">.</span><span style="color:#a6e22e">toUpperCase</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>        c<span style="color:#f92672">.</span><span style="color:#a6e22e">accept</span><span style="color:#f92672">(</span>ele<span style="color:#f92672">.</span><span style="color:#a6e22e">toLowerCase</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">);</span> <span style="color:#75715e">// &#34;H&#34;, &#34;h&#34;, &#34;EL&#34;, &#34;el&#34;, &#34;LLO&#34;, &#34;llo&#34;
+</span></span></span></code></pre></div><p>这三个方法都有 <code>XXmapToInt</code>, <code>XXmapToLong</code>, <code>XXmapToDouble</code> 的方法。</p>
+<h2 id="筛选">筛选</h2>
+<h3 id="filter">filter</h3>
+<p>把所有 f(ele) 为 true 的弄成一个新集合返回。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Stream&lt;String&gt; s
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>s<span style="color:#f92672">.</span><span style="color:#a6e22e">filter</span><span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>    ele <span style="color:#f92672">-&gt;</span> ele<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()</span> <span style="color:#f92672">&gt;</span> 1 <span style="color:#f92672">&amp;&amp;</span> ele<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()</span> <span style="color:#f92672">&lt;</span> 3
+</span></span><span style="display:flex;"><span><span style="color:#f92672">)</span> <span style="color:#75715e">// &#34;el&#34;
+</span></span></span></code></pre></div><h3 id="limit">limit</h3>
+<p>保留前 n 个。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>s<span style="color:#f92672">.</span><span style="color:#a6e22e">limit</span><span style="color:#f92672">(</span>1<span style="color:#f92672">);</span> <span style="color:#75715e">//  &#34;h&#34;
+</span></span></span></code></pre></div><h3 id="skip">skip</h3>
+<p>跳过前 n 个。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>s<span style="color:#f92672">.</span><span style="color:#a6e22e">skip</span><span style="color:#f92672">(</span>1<span style="color:#f92672">);</span> <span style="color:#75715e">//  &#34;el&#34;, &#34;llo&#34;
+</span></span></span></code></pre></div><h3 id="takewhile">takeWhile</h3>
+<p>一直拿直到后面的值为 false。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>s<span style="color:#f92672">.</span><span style="color:#a6e22e">takeWhile</span><span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>    ele <span style="color:#f92672">-&gt;</span> ele<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()</span> <span style="color:#f92672">&lt;=</span> 2
+</span></span><span style="display:flex;"><span><span style="color:#f92672">);</span> <span style="color:#75715e">//  &#34;h&#34;, &#34;el&#34;
+</span></span></span></code></pre></div><h3 id="dropwhile">dropWhile</h3>
+<p>一直丢直到后面的值为 fales，拿剩下的所有。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>s<span style="color:#f92672">.</span><span style="color:#a6e22e">dropWhile</span><span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>    ele <span style="color:#f92672">-&gt;</span> ele<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()</span> <span style="color:#f92672">&lt;=</span> 2
+</span></span><span style="display:flex;"><span><span style="color:#f92672">);</span> <span style="color:#75715e">//  &#34;llo&#34;
+</span></span></span></code></pre></div><h3 id="distinct">distinct</h3>
+<p>去重。</p>
+<h2 id="排序与查找">排序与查找</h2>
+<h3 id="sorted">sorted</h3>
+<p>排序，值的注意的是最好都是加上 comparator。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>s<span style="color:#f92672">.</span><span style="color:#a6e22e">sorted</span><span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">(</span>a<span style="color:#f92672">,</span> b<span style="color:#f92672">)</span> <span style="color:#f92672">-&gt;</span> a<span style="color:#f92672">.</span><span style="color:#a6e22e">compareTo</span><span style="color:#f92672">(</span>b<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">);</span> <span style="color:#75715e">// &#34;el&#34;, &#34;h&#34;, &#34;llo&#34;
+</span></span></span></code></pre></div><h3 id="allmatch-anymatch-nonematch">allMatch, anyMatch, noneMatch</h3>
+<p>全部/任意一个/没有一个符合特定条件。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>s<span style="color:#f92672">.</span><span style="color:#a6e22e">allMatch</span><span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>    ele <span style="color:#f92672">-&gt;</span> ele<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()</span> <span style="color:#f92672">&gt;</span> 1
+</span></span><span style="display:flex;"><span><span style="color:#f92672">);</span> <span style="color:#75715e">// false
+</span></span></span></code></pre></div><h3 id="count">count</h3>
+<p>集合元素个数</p>
+<h3 id="findany-findfirst">findAny, findFirst</h3>
+<p>返回任意一个/第一个元素，值的注意的是如果是空会返回一个 Option&lt;Null&gt;。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>s<span style="color:#f92672">.</span><span style="color:#a6e22e">findFirst</span><span style="color:#f92672">();</span> <span style="color:#75715e">// Option(&#34;h&#34;)
+</span></span></span></code></pre></div><h3 id="max-min">max, min</h3>
+<p>最大/小值</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>s<span style="color:#f92672">.</span><span style="color:#a6e22e">max</span><span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">(</span>a<span style="color:#f92672">,</span> b<span style="color:#f92672">)</span> <span style="color:#f92672">-&gt;</span> a<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()</span> <span style="color:#f92672">-</span> b<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">);</span> <span style="color:#75715e">// Option(&#34;llo&#34;)
+</span></span></span></code></pre></div><h2 id="reduce">reduce</h2>
+<p>reduce 的意思是将集合 A 里面所有的元素 a 通过某种运算返回一个特定的值 x 。(x 和 a 是同类型的)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>s<span style="color:#f92672">.</span><span style="color:#a6e22e">reduce</span><span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">,</span> <span style="color:#75715e">// 初始值 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">(</span>a<span style="color:#f92672">,</span> b<span style="color:#f92672">)</span> <span style="color:#f92672">-&gt;</span> a <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">+</span> b <span style="color:#75715e">// 方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">);</span> <span style="color:#75715e">// &#34;h el llo&#34;
+</span></span></span></code></pre></div><h2 id="收集">收集</h2>
+<h3 id="collect">collect</h3>
+<p>将 stream 转变回collection (list, set, map &hellip;)，这个是自己定义的，有方便的 <code>toArray</code> 和 <code>toList</code>。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-07-13</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://super-sayuri.github.io/blog/2022/07/13/java%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E6%88%90%E5%87%BD%E6%95%B0/" data-title="JAVA常用的函数式编成函数" data-hashtags="函数式编程,lambda,java"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://super-sayuri.github.io/blog/2022/07/13/java%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E6%88%90%E5%87%BD%E6%95%B0/" data-hashtag="函数式编程"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://super-sayuri.github.io/blog/2022/07/13/java%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E6%88%90%E5%87%BD%E6%95%B0/" data-title="JAVA常用的函数式编成函数"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://super-sayuri.github.io/blog/2022/07/13/java%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E6%88%90%E5%87%BD%E6%95%B0/" data-title="JAVA常用的函数式编成函数"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.0.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://super-sayuri.github.io/blog/2022/07/13/java%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E6%88%90%E5%87%BD%E6%95%B0/" data-title="JAVA常用的函数式编成函数"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/blog/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/">函数式编程</a>,&nbsp;<a href="/blog/tags/lambda/">lambda</a>,&nbsp;<a href="/blog/tags/java/">java</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/blog/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/blog/2022/07/05/%E4%BB%80%E4%B9%88%E6%98%AFlambda-%CE%BB/" class="prev" rel="prev" title="什么是lambda λ"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>什么是lambda λ</a></div>
+</div>
+<div id="comments"><div id="giscus" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://giscus.app">Giscus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.101.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/blog/" target="_blank">超级小百合</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"giscus":{"category":"Announcements","categoryId":"DIC_kwDOHWo87s4CPmgI","darkTheme":"dark","emitMetadata":"0","inputPosition":"bottom","lang":"zh-CN","lazyLoading":false,"lightTheme":"light","mapping":"pathname","reactionsEnabled":"1","repo":"super-sayuri/blog","repoId":"R_kgDOHWo87g"}}};</script><script type="text/javascript" src="/blog/js/theme.min.js"></script></body>
+</html>
