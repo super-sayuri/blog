@@ -3,7 +3,15 @@
         <title>All Posts - ❤小百合❤</title>
         <link>https://super-sayuri.github.io/blog/posts/</link>
         <description>All Posts | ❤小百合❤</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 13 Jul 2022 16:51:15 &#43;0800</lastBuildDate><atom:link href="https://super-sayuri.github.io/blog/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 18 Jul 2022 17:21:30 &#43;0800</lastBuildDate><atom:link href="https://super-sayuri.github.io/blog/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>普通话拼音韵母整理</title>
+    <link>https://super-sayuri.github.io/blog/2022/07/18/%E6%99%AE%E9%80%9A%E8%AF%9D%E6%8B%BC%E9%9F%B3%E9%9F%B5%E6%AF%8D%E6%95%B4%E7%90%86/</link>
+    <pubDate>Mon, 18 Jul 2022 17:21:30 &#43;0800</pubDate>
+    <author>超级小百合</author>
+    <guid>https://super-sayuri.github.io/blog/2022/07/18/%E6%99%AE%E9%80%9A%E8%AF%9D%E6%8B%BC%E9%9F%B3%E9%9F%B5%E6%AF%8D%E6%95%B4%E7%90%86/</guid>
+    <description><![CDATA[最近查资料的时候发现现代普通话完全没有一个按韵母查字的工具。所以决定自己造一个轮子。先整理一下普通话的所有韵母吧。 以下每一个分类表示韵最后的]]></description>
+</item>
+<item>
     <title>JAVA常用的函数式编成函数</title>
     <link>https://super-sayuri.github.io/blog/2022/07/13/java%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E6%88%90%E5%87%BD%E6%95%B0/</link>
     <pubDate>Wed, 13 Jul 2022 16:51:15 &#43;0800</pubDate>
